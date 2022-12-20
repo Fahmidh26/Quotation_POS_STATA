@@ -40,8 +40,13 @@
 						  <td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td>
 						  <td><input class="btn btn-warning" type="button" name="add" id="add" value="Add"></td>
 					</tr>
+					
 				</table>
-					<input class="btn btn-success" type="submit" name="save" id="save" value="
+				Discount percentage: <input type="number" id="discount-percentage"><br>
+				{{-- Discounted price: <span id="discounted-price"></span> --}}
+				<span>Grand Total<input type="text" name="grandtotal" id="grandtotal" readonly></span>
+					
+				<input class="btn btn-success" type="submit" name="save" id="save" value="
 					Save Data">
 			</div>
 	  </form>
@@ -55,7 +60,6 @@
 
   <script>
 	$(document).ready(function(){
-
 		var html='<tr><td><select id="item" name="item[]" class="form-control" required=""><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option value="{{ $product->id }}">{{ $product->product_name }}</option>@endforeach</select></td><td><input class="form-control" type="text" id="description" name="description[]" required=""></td><td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td><td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""><td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="remove"></td></tr>';
 
 		var x =1;
@@ -67,23 +71,52 @@
 	  $("#table_field").on('click', '#remove', function () {
     $(this).closest('tr').remove();
 	});
-
+	
 	$("#table_field tbody").on("input", ".unit_price", function () {
                 var unit_price = parseFloat($(this).val());
                 var qty = parseFloat($(this).closest("tr").find(".qty").val());
                 var total = $(this).closest("tr").find(".total");
                 total.val(unit_price * qty);
-
-              
+				totalPrice();
             });
-
 	$("#table_field tbody").on("input", ".qty", function () {
 		var qty = parseFloat($(this).val());
 		var unit_price = parseFloat($(this).closest("tr").find(".unit_price").val());
 		var total = $(this).closest("tr").find(".total");
 		total.val(unit_price * qty);
-		
+		totalPrice();
 	});
+
+	// $("#table_field tbody").on("input", ".qty", function () {
+	// 	var qty = parseFloat($(this).val());
+	// 	var unit_price = parseFloat($(this).closest("tr").find(".unit_price").val());
+	// 	var total = $(this).closest("tr").find(".total");
+	// 	total.val(unit_price * qty);
+	// 	totalPrice();
+	// });
+
+	function totalPrice(){
+		var sum = 0;
+	
+		$(".total").each(function(){
+		sum += parseFloat($(this).val());
+		});
+
+		$("#grandtotal").val(sum);
+		
+	}
+
+	document.querySelector('#discount-percentage').addEventListener('change', function() {
+ 		var discount_value = this.value;
+		var grandtotal = document.getElementById("grandtotal").value;
+		var discount = grandtotal - (discount_value / 100) * grandtotal;
+		$("#grandtotal").val(discount);
+		console.log(discount);
+
+  // Now you can use the inputValue variable to access the value of the input element
+	});
+
+
 
 
 	});
