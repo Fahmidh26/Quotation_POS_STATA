@@ -10,7 +10,7 @@
 
      <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Brand List</h3>
+        <h3 class="box-title">Customer List</h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -18,26 +18,28 @@
           <table id="example1" class="table table-bordered table-striped">
           <thead>
             <tr>
-              <th>Brand </th>
-              <th>Image</th>
+              <th>Name </th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Email</th>
               <th>Action</th>
                
             </tr>
           </thead>
           <tbody>
             
- @foreach($brands as $item)
+ {{-- @foreach($brands as $item) --}}
  <tr>
-  <td>{{ $item->brand_name }}</td>
-  <td><img src="{{ asset($item->brand_image) }}" style="width: 70px; height: 40px;"> </td>
+  {{-- <td>{{ $item->brand_name }}</td> --}}
+  <td></td>
   <td>
-<a href="{{ route('brand.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-<a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
- <i class="fa fa-trash"></i></a>
+{{-- <a href="{{ route('brand.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a> --}}
+{{-- <a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+ <i class="fa fa-trash"></i></a> --}}
   </td>
              
  </tr>
-  @endforeach
+  {{-- @endforeach --}}
           </tbody>
            
           </table>

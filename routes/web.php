@@ -14,7 +14,7 @@ use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
-use App\Http\Controllers\Backend\sliderController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Backend\subCategoryController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\homePageController;
@@ -161,21 +161,21 @@ Route::prefix('category')->group(function(){
 
 // Admin Slider All Routes 
     
-Route::prefix('slider')->group(function(){
+Route::prefix('customer')->group(function(){
     
-    Route::get('/view', [sliderController::class, 'SliderView'])->name('slider.view');
+    Route::get('/view', [CustomerController::class, 'SliderView'])->name('customer.view');
     
-    Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
+    Route::post('/store', [CustomerController::class, 'SliderStore'])->name('customer.store');
     
-    Route::get('/edit/{id}', [SliderController::class, 'SliderEdit'])->name('slider.edit');
+    Route::get('/edit/{id}', [CustomerController::class, 'SliderEdit'])->name('customer.edit');
     
-    Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
+    Route::post('/update', [CustomerController::class, 'SliderUpdate'])->name('customer.update');
     
-    Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+    Route::get('/delete/{id}', [CustomerController::class, 'SliderDelete'])->name('customer.delete');
     
-    Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+    // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
     
-    Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+    // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
     
     });
 

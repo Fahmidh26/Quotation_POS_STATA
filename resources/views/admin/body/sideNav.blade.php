@@ -40,7 +40,7 @@
     $brand = (auth()->guard('admin')->user()->brand == 1);
     $category = (auth()->guard('admin')->user()->category == 1);
     $product = (auth()->guard('admin')->user()->product == 1);
-    $slider = (auth()->guard('admin')->user()->slider == 1);
+    $customer = (auth()->guard('admin')->user()->customer == 1);
     $coupons = (auth()->guard('admin')->user()->coupons == 1);
     $shipping = (auth()->guard('admin')->user()->shipping == 1);
     $quotation = (auth()->guard('admin')->user()->quotation == 1);
@@ -72,6 +72,22 @@
         </li>
     @else
     @endif
+
+    @if($customer == true)
+    <li class="treeview {{ ($prefix == '/customer')?'active':'' }}  ">
+     <a href="#">
+       <i data-feather="file"></i>
+       <span>Customer</span>
+       <span class="pull-right-container">
+         <i class="fa fa-angle-right pull-right"></i>
+       </span>
+     </a>
+     <ul class="treeview-menu">
+       <li class="{{ ($route == 'customer.view')? 'active':'' }}"><a href="{{ route('customer.view') }}"><i class="ti-more"></i>Manage Customer</a></li>
+     </ul>
+   </li> 
+@else
+@endif	
 
 
 		@if($product == true)

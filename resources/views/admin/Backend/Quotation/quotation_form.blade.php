@@ -42,9 +42,11 @@
 					</tr>
 					
 				</table>
-				Discount percentage: <input type="number" id="discount-percentage"><br>
+				<span>Sub Total<input type="text" name="subtotal" id="subtotal" readonly></span><br><br>
+				Discount percentage: <input class="dper" type="number" id="discount-percentage"><br><br>
+				Discount Flat (TK): <input class="dflat" type="number" id="discount-flat"><br><br>
 				{{-- Discounted price: <span id="discounted-price"></span> --}}
-				<span>Grand Total<input type="text" name="grandtotal" id="grandtotal" readonly></span>
+				<span>Grand Total<input type="text" name="grandtotal" id="grandtotal" readonly></span><br><br>
 					
 				<input class="btn btn-success" type="submit" name="save" id="save" value="
 					Save Data">
@@ -85,14 +87,15 @@
 		var total = $(this).closest("tr").find(".total");
 		total.val(unit_price * qty);
 		totalPrice();
+
 	});
 
-	// $("#table_field tbody").on("input", ".qty", function () {
-	// 	var qty = parseFloat($(this).val());
-	// 	var unit_price = parseFloat($(this).closest("tr").find(".unit_price").val());
-	// 	var total = $(this).closest("tr").find(".total");
-	// 	total.val(unit_price * qty);
-	// 	totalPrice();
+	// $("#discount-percentage").on("input", ".dper", function () {
+	// 	var discount_value = this.value;
+	// 	var grandtotal = document.getElementById("grandtotal").value;
+	// 	var discount = grandtotal - (discount_value / 100) * grandtotal;
+	// 	$("#grandtotal").val(discount);
+	// 	console.log(discount);
 	// });
 
 	function totalPrice(){
@@ -103,12 +106,13 @@
 		});
 
 		$("#grandtotal").val(sum);
-		
+		$("#subtotal").val(sum);	
 	}
 
-	document.querySelector('#discount-percentage').addEventListener('change', function() {
+	
+	document.querySelector('#discount-percentage').addEventListener('input', function() {
  		var discount_value = this.value;
-		var grandtotal = document.getElementById("grandtotal").value;
+		var grandtotal = document.getElementById("subtotal").value;
 		var discount = grandtotal - (discount_value / 100) * grandtotal;
 		$("#grandtotal").val(discount);
 		console.log(discount);
@@ -116,8 +120,15 @@
   // Now you can use the inputValue variable to access the value of the input element
 	});
 
+	document.querySelector('#discount-flat').addEventListener('input', function() {
+ 		var discount_value = this.value;
+		var grandtotal = document.getElementById("subtotal").value;
+		var discount = grandtotal - discount_value;
+		$("#grandtotal").val(discount);
+		console.log(discount);
 
-
+  // Now you can use the inputValue variable to access the value of the input element
+	});
 
 	});
 </script>
