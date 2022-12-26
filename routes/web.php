@@ -163,15 +163,15 @@ Route::prefix('category')->group(function(){
     
 Route::prefix('customer')->group(function(){
     
-    Route::get('/view', [CustomerController::class, 'SliderView'])->name('customer.view');
+    Route::get('/view', [CustomerController::class, 'CustomerView'])->name('customer.view');
     
-    Route::post('/store', [CustomerController::class, 'SliderStore'])->name('customer.store');
+    Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.store');
     
-    Route::get('/edit/{id}', [CustomerController::class, 'SliderEdit'])->name('customer.edit');
+    Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
     
-    Route::post('/update', [CustomerController::class, 'SliderUpdate'])->name('customer.update');
+    Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
     
-    Route::get('/delete/{id}', [CustomerController::class, 'SliderDelete'])->name('customer.delete');
+    Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
     
     // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
     
@@ -552,4 +552,6 @@ Route::prefix('product')->group(function(){
     Route::get('/form', [QuotationController::class, 'index'])->name('admin.quotation');
     Route::post('/store-input-fields', [QuotationController::class, 'saveUser'])->name('repeater');
     
-});
+    });
+
+    Route::get('/get-data', [QuotationController::class, 'getData']);

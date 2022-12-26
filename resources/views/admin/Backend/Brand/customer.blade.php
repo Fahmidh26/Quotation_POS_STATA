@@ -28,18 +28,20 @@
           </thead>
           <tbody>
             
- {{-- @foreach($brands as $item) --}}
+ @foreach($customers as $item)
  <tr>
-  {{-- <td>{{ $item->brand_name }}</td> --}}
-  <td></td>
+  <td>{{ $item->customer_name }}</td>
+  <td>{{ $item->address }}</td>
+  <td>{{ $item->email }}</td>
+  <td>{{ $item->phone }}</td>
   <td>
-{{-- <a href="{{ route('brand.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a> --}}
-{{-- <a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
- <i class="fa fa-trash"></i></a> --}}
+<a href="{{ route('brand.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+<a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+ <i class="fa fa-trash"></i></a>
   </td>
              
  </tr>
-  {{-- @endforeach --}}
+  @endforeach
           </tbody>
            
           </table>
@@ -61,44 +63,51 @@
 
      <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Add Brand </h3>
+        <h3 class="box-title">Add Customer </h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
         <div class="table-responsive">
 
 
-<form method="post" action="{{ route('brand.store') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('customer.store') }}">
    @csrf
            
  <div class="form-group">
-  <h6>Brand Name <span class="text-danger">*</span></h6>
+  <h6>Customer Name <span class="text-danger">*</span></h6>
   <div class="controls">
- <input type="text"  name="brand_name_en" class="form-control" > 
- @error('brand_name_en') 
+ <input type="text"  name="customer_name" class="form-control" > 
+ @error('customer_name') 
  <span class="text-danger">{{ $message }}</span>
  @enderror 
 </div>
 </div>
-
-
-{{-- <div class="form-group">
-  <h6>Brand Name Bangla <span class="text-danger">*</span></h6>
-  <div class="controls">
- <input type="text" name="brand_name_hin" class="form-control" >
-   @error('brand_name_hin') 
- <span class="text-danger">{{ $message }}</span>
- @enderror 
-  </div>
-</div> --}}
-
-
 
 <div class="form-group">
-  <h6>Brand Image <span class="text-danger">*</span></h6>
+  <h6>Email<span class="text-danger">*</span></h6>
   <div class="controls">
- <input type="file" name="brand_image" class="form-control" >
-   @error('brand_image') 
+ <input type="text"  name="email" class="form-control" > 
+ @error('email') 
+ <span class="text-danger">{{ $message }}</span>
+ @enderror 
+</div>
+</div>
+
+<div class="form-group">
+  <h6>Phone<span class="text-danger">*</span></h6>
+  <div class="controls">
+ <input type="text"  name="phone" class="form-control" > 
+ @error('phone') 
+ <span class="text-danger">{{ $message }}</span>
+ @enderror 
+</div>
+</div>
+
+<div class="form-group">
+  <h6>Address<span class="text-danger">*</span></h6>
+  <div class="controls">
+ <input type="text" name="address" class="form-control" >
+   @error('address') 
  <span class="text-danger">{{ $message }}</span>
  @enderror 
   </div>
@@ -106,10 +115,9 @@
 
 
 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Brand">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Customer">					 
 						</div>
-         
-                 
+   
           </div>
 </form>
 

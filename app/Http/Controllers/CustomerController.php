@@ -9,38 +9,31 @@ use Intervention\Image\Facades\Image as Image;
 
 class CustomerController extends Controller
 {
-    public function SliderView(){
-		$customer = Customer::latest()->get();
-		return view('admin.Backend.Brand.customer' ,compact('customer'));
+    public function CustomerView(){
+		$customers = Customer::latest()->get();
+		return view('admin.Backend.Brand.customer' ,compact('customers'));
 	}
 
 
-     public function SliderStore(Request $request){
+     public function CustomerStore(Request $request){
 
     	$request->validate([
     		 
-    		'slider_img' => 'required',
+    		'customer_name' => 'required',
     	],[
-    		'slider_img.required' => 'Plz Select One Image',
+    		'phone' => 'required',
     		 
     	]);
 
-    	$image = $request->file('slider_img');
-    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->resize(869,370)->save('upload/slider/'.$name_gen);
-    	$save_url = 'upload/slider/'.$name_gen;
-
         Customer::insert([
-		'title' => $request->title,
-        // 'subTitle' => $request->subTitle,
-        // 'startingPrice' => $request->startingPrice,
-        // 'slideStyle' => $request->slideStyle,
-        'slider_img' => $save_url,
-
+		'customer_name' => $request->customer_name,
+        'email' => $request->email,
+        'phone' => $request->phone,
+        'address' => $request->address,
     	]);
 
 	    $notification = array(
-			'message' => 'Slider Inserted Successfully',
+			'message' => 'Customer Inserted Successfully',
 			'alert-type' => 'success'
 		);
 
@@ -48,13 +41,13 @@ class CustomerController extends Controller
 
     } // end method
 
-	public function SliderEdit($id){
+	public function CustomerEdit($id){
 		$customer = Customer::findOrFail($id);
 			return view('admin.Backend.Brand.Slider.slider_edit',compact('customer'));
 		}
 	
 	
-	public function SliderUpdate(Request $request){
+	public function CustomerUpdate(Request $request){
 			
 			$slider_id = $request->id;
 			$old_img = $request->old_image;
@@ -101,7 +94,7 @@ class CustomerController extends Controller
 		} // end method 
 	
 	
-		public function SliderDelete($id){
+		public function CustomerDelete($id){
 			$customer = Customer::findOrFail($id);
 			$img = $customer->slider_img;
 			unlink($img);
