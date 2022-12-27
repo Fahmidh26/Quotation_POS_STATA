@@ -17,7 +17,7 @@
 					<div class="row mb-3">
 						<div class="col-2"><label for="mySelect">Customer</label></div>
 						<div class="col"><input type="text" id="mySearch" class="form-control mb-3" placeholder="Search Customer">
-							<select id="mySelect" class="form-control">
+							<select id="mySelect" name="customer_id" class="form-control">
 							<option value="" selected="" disabled="">Select Customer</option>
 							@foreach($customers as $customer)
 									 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>	
@@ -55,9 +55,9 @@
 				<table class="table table-bordered" id="table_field">
 					  <tr>
 						  <th>Item Information</th>
-						  <th>Description</th>
-						  <th>Qty</th>
+						  <th>Description</th> 
 						  <th>Rate</th>
+						  <th>Qty</th>
 						  <th>Total</th>
 						  <th>Add or Remove</th>
 					</tr>
@@ -94,17 +94,17 @@
 						</div>
 						<div class="row mb-3">
 							<div class="col-4"><label>Discount (%)</label></div>
-							<div class="col"><input class="dper form-control" type="number" id="discount-percentage">
+							<div class="col"><input class="dper form-control" type="number" id="discount-percentage" name="dper">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-4"><label>VAT (%)</label></div>
-							<div class="col"><input class="vper form-control" type="number" id="vat-percentage">
+							<div class="col"><input class="vper form-control" type="number" id="vat-percentage" name="">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-4"><label>Discount (TK)</label></div>
-							<div class="col"><input class="dflat form-control" type="number" id="discount-flat">
+							<div class="col"><input class="dflat form-control" name="dflat" type="number" id="discount-flat">
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -222,6 +222,33 @@
       });
     });
 
+	// $("#item").change(function() {
+    //   // get the selected option value
+    //   var selectedOption = $(this).val();
+	// 	console.log('hello');
+    //   // make an AJAX request to the server
+    //   $.get('/get-data-product', { option: selectedOption }, function(data) {
+    //     // update the field with the response data
+    //     $("#unit_cost").val(data.selling_price);
+    //   });
+    // });
+
+	$("#table_field tbody").on("change", "select[name='item[]']", function () {
+		var product_id = $(this).val();
+		var price = $(this).closest("tr").find(".unit_price");
+		$.get('/get-price', { option: product_id }, function(data) {
+        // update the field with the response data
+		price.val(data.selling_price);
+      });
+		// price.val(product_id);
+               
+    });
+
+	// $("select[name='item[]']").each(function() {
+	// 	var selectedOption = $(this).val();
+	// 	console.log('hello');
+		
+	// });
 
 	});
 </script>

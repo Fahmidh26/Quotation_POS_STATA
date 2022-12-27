@@ -30,6 +30,8 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\slider;
 use App\Models\subCategory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -555,3 +557,17 @@ Route::prefix('product')->group(function(){
     });
 
     Route::get('/get-data', [QuotationController::class, 'getData']);
+    Route::get('/get-data-product', [QuotationController::class, 'getDataProduct']);
+    Route::get('/get-price', [QuotationController::class, 'getProductPrice']);
+
+    Route::get('/get-unit-price', function(Request $request) {
+        // get the product ID from the query string
+        $productId = $request->query('productId');
+      
+        // $unitPrice = Product::where('id',$productId)->value('unit_price')->get();
+        // query the database for the unit price of the product
+        $unitPrice = DB::table('products')->where('id', $productId)->value('selling_price');
+      
+        // return the unit price as a JSON response
+        return response()->json(['unitPrice' => $unitPrice]);
+      });
