@@ -31,7 +31,7 @@
 		<li class="{{ ($route == 'dashboard')? 'active':'' }}">
           <a href="{{ url('admin/dashboard') }}">
             <i data-feather="pie-chart"></i>
-			<span>Dashboard</span>
+			<span>Add Quotation</span>
           </a>
     </li>  
 
@@ -55,7 +55,6 @@
     $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
     @endphp
 
-		
     @if($category == true)
         <li class="treeview {{ ($prefix == '/category')?'active':'' }}  ">
           <a href="#">
@@ -140,9 +139,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-        <li class="{{ ($route == 'admin.quotation')? 'active':'' }}"><a href="{{ route('admin.quotation') }}"><i class="ti-more"></i>Add Quotation</a></li>
+        {{-- <li class="{{ ($route == 'admin.quotation')? 'active':'' }}"><a href="{{ route('admin.quotation') }}"><i class="ti-more"></i>Add Quotation</a></li> --}}
 
-        <li class="{{ ($route == 'all.request')? 'active':'' }}"><a href="{{ route('all.request') }}"><i class="ti-more"></i>All Request</a></li>
+        <li class="{{ ($route == 'all.quotation')? 'active':'' }}"><a href="{{ route('all.quotation') }}"><i class="ti-more"></i>Manage Quotaion</a></li>
 
 
           </ul>

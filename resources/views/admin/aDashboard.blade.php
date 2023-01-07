@@ -8,7 +8,9 @@
     <meta name="author" content="">
     <link rel="icon"  href="{{ asset('frontend/assets/img/fav.png') }}">
 
-    <title>STATA Admin Dashboard</title>
+    <title>@auth
+      {{ Auth::user()->name }}
+      @endauth Dashboard</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">

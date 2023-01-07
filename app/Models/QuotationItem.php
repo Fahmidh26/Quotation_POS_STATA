@@ -15,5 +15,9 @@ class QuotationItem extends Model
     	return $this->belongsTo(Product::class,'product_id','id');
     }
 
+    public function quotation(){
+    	return $this->belongsTo(Quotation::class,'quotation_id','id');
+    }
+
 }
 

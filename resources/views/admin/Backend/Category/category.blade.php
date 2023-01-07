@@ -1,5 +1,9 @@
 @extends('admin.aDashboard')
+@php
+use Illuminate\Support\Facades\Auth;
+@endphp
 @section('admins')
+
 
 
   <!-- Content Wrapper. Contains page content -->

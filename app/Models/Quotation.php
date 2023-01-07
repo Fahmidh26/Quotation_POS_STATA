@@ -14,5 +14,9 @@ class Quotation extends Model
     public function customer(){
     	return $this->belongsTo(Customer::class,'customer_id','id');
     }
+
+    public function auth(){
+    	return $this->belongsTo(Admin::class,'auth_id','id');
+    }
     
 }

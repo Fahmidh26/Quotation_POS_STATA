@@ -27,6 +27,7 @@ use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\WishlistController;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\slider;
 use App\Models\subCategory;
@@ -95,7 +96,9 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
 
 ])->group(function () {
     Route::get('/admin/dashboard', function () {
-        return view('admin.adminindex');
+        $customers = Customer::orderBy('customer_name','ASC')->get();
+        $products = Product::orderBy('product_name','ASC')->get();
+        return view('admin.Backend.Quotation.quotation_form', compact('products','customers'));
     });
 });
 
@@ -550,10 +553,14 @@ Route::prefix('product')->group(function(){
 
     // QUOTATION
     Route::prefix('quotation')->group(function(){
-
-    Route::get('/form', [QuotationController::class, 'index'])->name('admin.quotation');
+    // Route::get('/form', [QuotationController::class, 'index'])->name('admin.quotation');
+    Route::get('/manage', [QuotationController::class, 'ManageQuotation'])->name('all.quotation');
+    
     Route::post('/store-input-fields', [QuotationController::class, 'saveUser'])->name('repeater');
     
+    Route::get('/view/{quotation_id}', [QuotationController::class, 'viewQuotation'])->name('view.quotation');
+    
+    Route::get('/invoice_download/{quotation_id}', [QuotationController::class, 'AdminInvoiceDownload'])->name('invoice.download');
     });
 
     Route::get('/get-data', [QuotationController::class, 'getData']);

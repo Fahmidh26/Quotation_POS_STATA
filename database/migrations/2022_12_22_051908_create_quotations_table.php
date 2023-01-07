@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('auth_id');
             $table->date('quotation_date')->nullable();
             $table->date('expire_date')->nullable();
             $table->float('sub_total',8,2);  

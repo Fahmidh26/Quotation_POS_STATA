@@ -63,7 +63,7 @@ My Checkout
 					</div>
 
 					<div class="col-md-12 form-group p_star">
-						<select name="district_id" class="country_select" required="" >
+						<select name="district_id" class="country_select" required="">
 							<option value="" selected="" disabled="">Select District</option>
 							@foreach($districts as $item)
 									<option value="{{ $item->id }}">{{ $item->district_name }}</option>	
@@ -75,7 +75,7 @@ My Checkout
 					</div>
 
 					<div class="col-md-12 form-group">
-						<select name="state_id" class="country_select" required="" >
+						<select name="state_id" class="country_select" required="">
 							<option value="" selected="" disabled="">Select State</option>
 							@foreach($states as $item)
 							<option value="{{ $item->id }}">{{ $item->state_name }}</option>	

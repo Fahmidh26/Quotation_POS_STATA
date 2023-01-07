@@ -41,7 +41,7 @@ class AdminUserController extends Controller
 		'brand' => $request->brand,
 		'category' => $request->category,
 		'product' => $request->product,
-		'slider' => $request->slider,
+		'customer' => $request->slider,
 		'coupons' => $request->coupons,
 
 		'shipping' => $request->shipping,

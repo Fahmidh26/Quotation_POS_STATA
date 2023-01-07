@@ -12,6 +12,12 @@
     $pending = App\Models\Order::where('status','pending')->get();
 @endphp
 
+@auth
+    <p>Hello, {{ Auth::user()->name }}! Your id is {{ Auth::id() }}</p>
+@endauth
+@guest
+    <p>Please login to see your id.</p>
+@endguest
 
 <div class="container-full">
 
