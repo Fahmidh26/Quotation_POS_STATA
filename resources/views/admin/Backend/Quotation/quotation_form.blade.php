@@ -244,7 +244,12 @@
 		var price = $(this).closest("tr").find(".unit_price");
 		$.get('/get-price', { option: product_id }, function(data) {
         // update the field with the response data
-		price.val(data.selling_price);
+		if(data.discount_price == null){
+			price.val(data.selling_price);
+		}else{
+			price.val(data.discount_price);
+		}
+			
       });
 		// price.val(product_id);
                

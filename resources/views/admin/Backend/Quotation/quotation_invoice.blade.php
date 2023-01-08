@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Invoice</title>
+<title>Quotation</title>
 
 <style type="text/css">
     * {
@@ -20,7 +20,7 @@
         background-color: lightgray
     }
     .font{
-      font-size: 15px;
+      font-size: 13px;
     }
     .authority {
         /*text-align: center;*/
@@ -28,115 +28,114 @@
     }
     .authority h5 {
         margin-top: -10px;
-        color: green;
+        color: #ff7c00;
         /*text-align: center;*/
         margin-left: 35px;
     }
     .thanks p {
-        color: green;;
+        color: #ff7c00;;
         font-size: 16px;
         font-weight: normal;
         font-family: serif;
         margin-top: 20px;
     }
+
+    .t {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
 </style>
 
 </head>
 <body>
 
-  <table width="100%" style="background: #F7F7F7; padding:0 20px 0 20px;">
+  <table width="100%" style="background: #F7F7F7; padding:0 10px 0 10px;">
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          <h2 style="color: green; font-size: 26px;"><strong>STATA IT Limited.</strong></h2>
+          <br><br>
+          <img width="200px" height="72px" src="frontend/assets/img/logo1.png" alt="">
+          {{-- <h2 style="color: #ff7c00; font-size: 26px;"><strong>Bengal Automation.</strong></h2> --}}
         </td>
         <td align="right">
             <pre class="font" >
-                STATA IT Limited Head Office
+              Bengal Automation
                Email:statabangladesh@gmail.com <br>
-               Mob: 88 09678200509 <br>
-               West Wind Point, Commercial Level 2,
-               Cha-89/4-5, Progoti Sarani, North Badda
-               Bir Uttam Rafikul Islam Avenue, Dhaka 1212<br>
-
+               Mob: 88 09678200509 
             </pre>
         </td>
     </tr>
-
   </table>
 
 
-  <table width="100%" style="background:white; padding:2px;""></table>
-  <table width="100%" style="background: #F7F7F7; padding:0 5 0 5px;" class="font">
+  <table width="100%" style="background:white; padding:2px;"></table>
+  <table width="100%" style="background: #F7F7F7; padding:0 5px 0 5px;" class="font">
     <tr>
         <td>
           <p class="font" style="margin-left: 20px;">
-           <strong>Quotation:</strong> {{ $quotation->invoice }}<br>
-           <strong>Email:</strong> {{ $quotation->quotation_date }} <br>
-           <strong>Phone:</strong> {{ $quotation->expire_date }} <br>
-           {{-- @php
-            $div = $order->division->division_name;
-            $dis = $order->district->district_name;
-            $state = $order->state->state_name;
-           @endphp
-             --}}
-           {{-- <strong>Address:</strong>{{ $order->notes }} <br> {{ $div }},{{ $dis }}.{{ $state }} <br>
-           <strong>Post Code:</strong> {{ $order->post_code }} --}}
+           <strong>Name:</strong> {{ $quotation->customer->customer_name }}<br>
+           <strong>Email:</strong> {{ $quotation->customer->email }} <br>
+           <strong>Phone:</strong> {{  $quotation->customer->phone }} <br>
+           <strong>Address:</strong>{{  $quotation->customer->address  }}
          </p>
         </td>
         <td>
-          <p class="font">
-            {{-- <h3><span style="color: green;">Invoice:</span> #{{ $order->invoice_no}}</h3>
-            Order Date: {{ $order->order_date }} <br>
-             Delivery Date: {{ $order->delivered_date }} <br>
-            Payment Type : {{ $order->payment_method }} </span> --}}
+          <p class="font" style="margin-left: 20px; margin-top:-12px">
+            <h3><span style="color: #ff7c00;">Invoice:</span> #{{ $quotation->invoice}}</h3>
+            <strong>Quotation Date:</strong> {{ $quotation->quotation_date }} <br>
+            <strong>Expiry Date:</strong> {{ $quotation->expire_date }} <br>
          </p>
         </td>
     </tr>
   </table>
   <br/>
-<h3>Products</h3>
-  <table width="100%">
-    <thead style="background-color: green; color:#FFFFFF;">
+<h3>Product List</h3>
+  <table class="t" width="100%">
+    <thead style="background-color: #ff7c00; color:#FFFFFF;">
       <tr class="font">
-        <th>Image</th>
-        <th>Product Name</th>
-        <th>Size</th>
-        <th>Color</th>
-        <th>Code</th>
-        <th>Quantity</th>
-        <th>Unit Price </th>
-        <th>Discount </th>
-        <th>Total </th>
+        <th class="t">SL.</th>
+        <th class="t">Product Name</th>
+        <th class="t">Code</th>
+        <th class="t">Unit Price </th>
+        <th class="t">Quantity</th>
+        <th class="t">Discount </th>
+        <th class="t">Total </th>
       </tr>
     </thead>
     <tbody>
+        @php
+             $sl = 1;
+        @endphp
      @foreach($quotationItem as $item)
       <tr class="font">
-        <td align="center">
-            {{-- <img src="{{ public_path($item->product->product_thambnail)  }}" height="60px;" width="60px;" alt=""> --}}
+        <td class="t" align="center">
+                {{$sl++}}
         </td>
-        <td align="center"> {{ $item->product->product_name }}</td>
-        <td align="center">
-          {{-- @if($item->size == NULL)
-           ----
-          @else
-            {{ $item->size }}
-          @endif --}}
+        <td class="t" align="center"> {{ $item->product->product_name }}</td>
+        <td class="t" align="center">
+            {{ $item->product->product_code }}
+        </td>
+        <td class="t" align="center">
+            {{-- @if ($item->product->discount_price == NULL) --}}
+            TK {{ $item->product->selling_price  }}
+            {{-- @else
+            TK {{ $item->product->discount_price  }}
+            @endif --}}
+        </td>
+
+        <td class="t" align="center">{{ $item->qty }}</td>
             
-        </td>
-        {{-- <td align="center">{{ $item->color }}</td>
-        <td align="center">{{ $item->product->product_code }}</td>
-        <td align="center">{{ $item->qty }}</td>
-        <td align="center">TK {{ $item->product->selling_price }}</td> --}}
-        <td align="center">
-          {{-- @if ($item->product->discount_price == NULL)
+       
+        <td class="t" align="center">
+            @if ($item->product->discount_price == NULL)
             --
-          @else
-          TK {{ $item->product->discount * $item->qty  }}
-          @endif
-          </td>
-        <td align="center">TK {{ $item->price * $item->qty }} </td> --}}
+            @else
+            TK {{ ($item->product->selling_price) - ($item->product->discount_price) }}
+            @endif
+        </td>
+        
+        <td class="t" align="center">TK {{ $item->amount }} </td>
       </tr>
       @endforeach
       
@@ -148,19 +147,39 @@
         <td align="right" >
          
           <hr>  
-          {{-- <h2><span style="color: green;">Coupon: </span>{{ $order->coupon }}</h2>
-          <h2><span style="color: green;">Discount Amount{{ $order->coupon_percentage }}: </span>{{ $order->coupon_discount }}</h2>
-          <h2><span style="color: green;">Subtotal: </span>TK {{ $order->amount }}</h2>
+          <h3><span style="color: #ff7c00;">Sub Total </span> <span style="font-size: 12px">{{ $quotation->sub_total }}</span></h3>
+          <h3><span style="color: #ff7c00;">Discount </span>
+            
+            <span style="font-size: 12px">
+              @if ($quotation->discount_percentage == NULL)
+                TK {{ $quotation->discount_flat }}
+            @else
+                {{ $quotation->discount_percentage  }}%
+            @endif
+            </span>
+          </h3>
+          <h3><span style="color: #ff7c00;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3>
 
-            <h2><span style="color: green;">Total:</span> TK {{ $order->amount }}</h2> --}}
+            <h3><span style="color: #ff7c00;">Grand Total</span> <span style="font-size: 12px"> TK {{ $quotation->grand_total }}</span></h3>
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
+            <hr>
+            <h3><span style="color: #ff7c00;">Net Total</span> <span style="font-size: 15px"> TK {{ $quotation->grand_total }}</span></h3>
         </td>
+
+    </tr>
+    <br>
+    <tr>
+       <td><b> Quotation Details : </b>{{$quotation->details}}</td> 
     </tr>
   </table>
+  <div class="seal" style="margin:10px 50px">
+    <img width="120" height="122" src="frontend/assets/img/authorized-seal.png" alt="">
+  </div>
+  
   {{-- <div class="thanks mt-3">
     <p>Thanks For Buying Products..!!</p>
   </div> --}}
-  <div class="authority float-right mt-5">
+  <div class="authority float-right">
       <p>-----------------------------------</p>
       <h5>Authority Signature:</h5>
     </div>

@@ -90,7 +90,7 @@
 					</tr>
 
                     @endforeach
-					<tr>
+					{{-- <tr>
 						<td>
 						  <select id="item" name="item[]" class="form-control" required="" >
 							  <option value="" selected="" disabled="">Select Product</option>
@@ -99,16 +99,13 @@
 							  @endforeach
 						  </select>
 
-						  
-						  {{-- <input class="form-control" type="text" name="txtFullname[]"
-						required=""> --}}
 					  </td>
 						<td><input class="form-control" type="text" id="description" name="description[]" required=""></td>
 						<td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td>
 						<td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""></td>
 						<td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td>
 						<td><input class="btn btn-warning" type="button" name="add" id="add" value="Add"></td>
-				  </tr>
+				  </tr> --}}
 				</table>
 				
 					<div class="row">
@@ -267,7 +264,11 @@
 		var price = $(this).closest("tr").find(".unit_price");
 		$.get('/get-price', { option: product_id }, function(data) {
         // update the field with the response data
-		price.val(data.selling_price);
+		if(data.discount_price == null){
+			price.val(data.selling_price);
+		}else{
+			price.val(data.discount_price);
+		}
       });
 		// price.val(product_id);
                
