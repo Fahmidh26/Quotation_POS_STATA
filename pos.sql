@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2022 at 05:33 AM
+-- Generation Time: Jan 08, 2023 at 01:42 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bengal_automation`
+-- Database: `pos`
 --
 
 -- --------------------------------------------------------
@@ -37,7 +37,7 @@ CREATE TABLE `admins` (
   `brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `product` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `coupons` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `shipping` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `setting` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -62,8 +62,9 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `brand`, `category`, `product`, `slider`, `coupons`, `shipping`, `setting`, `returnorder`, `review`, `orders`, `locations`, `stock`, `reports`, `alluser`, `adminuserrole`, `quotation`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$ALbMmGnqCeBflP.JT8LWNu/swsmervF2UFssUBA3QKo52c6CrA9Ye', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, 'AJQW7EzYpSsVFnAZNflHGg5qnVKG9xBwUSwjzXV8QpWnOsllTZtdovJ471iC', NULL, '202207230834attachment_127807231.jfif', '2022-06-05 03:57:32', '2022-07-23 03:06:17');
+INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `brand`, `category`, `product`, `customer`, `coupons`, `shipping`, `setting`, `returnorder`, `review`, `orders`, `locations`, `stock`, `reports`, `alluser`, `adminuserrole`, `quotation`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$ALbMmGnqCeBflP.JT8LWNu/swsmervF2UFssUBA3QKo52c6CrA9Ye', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '7vQ0tDooW8lm7V6q9Q5jiOkY8d7IFtIqYptOJxZQyiBKKPeXyX5pnPJkCWQR', NULL, '202207230834attachment_127807231.jfif', '2022-06-05 03:57:32', '2022-07-23 03:06:17'),
+(7, 'Sayma Akter', 'fahmidh26@gmail.com', NULL, '$2y$10$WCfvH6ljbVaTlJ/b79GQMO02tEUn5jFmj5b5CKKrdgH.ExE/EPAVK', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1753440570992745.jpg', '2022-12-28 01:07:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -103,11 +104,17 @@ CREATE TABLE `carts` (
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `feature` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VALUES
+(9, 'Electronics', '2022-12-17 00:39:29', NULL),
+(10, 'Locks', '2022-12-17 00:41:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -124,6 +131,30 @@ CREATE TABLE `coupons` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `customer_name`, `email`, `phone`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'fahmid', 'fahmidh27@gmail.com', '01964870827', 'bandarban', NULL, NULL),
+(2, 'ifaz', 'ifazalam69@gmail.com', '01323264870827', 'sundorban', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -202,7 +233,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2022_06_30_065319_create_site_settings_table', 16),
 (26, '2022_06_30_110044_create_seos_table', 17),
 (27, '2022_07_02_062717_create_reviews_table', 18),
-(28, '2022_08_01_044732_create_locations_table', 19);
+(28, '2022_08_01_044732_create_locations_table', 19),
+(29, '2022_12_17_142839_create_quotations_table', 20),
+(30, '2022_12_18_071520_create_quotations_table', 21),
+(31, '2022_12_18_083754_create_quotation_items_table', 22),
+(32, '2022_12_21_072212_create_customers_table', 22),
+(33, '2022_12_22_051900_create_quotation_items_table', 23),
+(34, '2022_12_22_051908_create_quotations_table', 23),
+(35, '2022_12_22_051920_create_customers_table', 23),
+(36, '2022_12_22_062042_create_quotation_items_table', 24);
 
 -- --------------------------------------------------------
 
@@ -370,30 +409,108 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `brand_id` int(11) DEFAULT NULL,
   `category_id` int(11) NOT NULL,
-  `subcategory_id` int(11) NOT NULL,
   `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_tags` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `product_color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `selling_price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `discount_price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `short_descp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `long_descp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_thambnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `video_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `new` int(11) DEFAULT NULL,
-  `sale` int(11) DEFAULT NULL,
-  `best_seller` int(11) DEFAULT NULL,
-  `combo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `category_id`, `product_name`, `product_code`, `selling_price`, `discount_price`, `discount`, `status`, `created_at`, `updated_at`) VALUES
+(28, 10, 'STATA Bolt', 'sa', '100', '90', '10', 1, '2022-12-27 04:08:53', NULL),
+(29, 9, 'ifazzz', 'ST-BOLT-SDL', '2500', '2000', '500', 1, '2022-12-27 04:09:12', NULL),
+(30, 10, 'x9', 'dfdfdfdfd', '27000', NULL, '25001', 1, '2023-01-04 02:24:27', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quotations`
+--
+
+CREATE TABLE `quotations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `auth_id` bigint(20) UNSIGNED NOT NULL,
+  `invoice` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quotation_date` date DEFAULT NULL,
+  `expire_date` date DEFAULT NULL,
+  `sub_total` double(8,2) NOT NULL,
+  `grand_total` double(8,2) NOT NULL,
+  `discount_percentage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount_flat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vat_percentage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vat_amount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quotations`
+--
+
+INSERT INTO `quotations` (`id`, `customer_id`, `auth_id`, `invoice`, `quotation_date`, `expire_date`, `sub_total`, `grand_total`, `discount_percentage`, `discount_flat`, `vat_percentage`, `vat_amount`, `total_discount`, `details`, `created_at`, `updated_at`) VALUES
+(9, 2, 7, 'STA79786413', '2022-12-30', '2022-12-29', 5000.00, 4980.00, '26', '', NULL, NULL, '20', 'asasasas', '2022-12-28 02:33:48', NULL),
+(10, 1, 7, 'STA83983868', '2022-12-29', '2022-12-30', 200.00, 180.00, NULL, '20', NULL, NULL, '20', 'asasasas', '2022-12-28 02:56:59', NULL),
+(11, 1, 7, 'STA99200923', '2022-12-30', '2022-12-30', 5000.00, 4980.00, NULL, '20', NULL, NULL, '20', 'das', '2022-12-28 03:01:25', NULL),
+(13, 1, 1, 'STA13586498', '1971-12-23', '2015-10-16', 29700.00, 29680.00, NULL, '20', NULL, NULL, '20', 'Temporibus tempore', '2023-01-07 00:43:15', NULL),
+(14, 2, 1, 'STA71200428', '2004-10-07', '1975-05-30', 81700.00, 73530.00, '10', NULL, NULL, NULL, NULL, 'Dolores occaecat iru', '2023-01-07 07:56:02', NULL),
+(15, 1, 1, 'STA47652491', '1971-04-16', '1981-06-14', 62438.00, 56194.20, '10', NULL, NULL, NULL, NULL, 'Amet fugit molesti', '2023-01-07 09:17:08', NULL),
+(18, 2, 7, 'STA13734083', '2023-02-07', '2023-01-08', 37360.00, 37340.00, NULL, '20', NULL, NULL, '20', 'Ullam dolor qui labo', '2023-01-08 05:39:16', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quotation_items`
+--
+
+CREATE TABLE `quotation_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `quotation_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `amount` int(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quotation_items`
+--
+
+INSERT INTO `quotation_items` (`id`, `quotation_id`, `product_id`, `qty`, `price`, `amount`, `created_at`, `updated_at`) VALUES
+(12, 9, 29, '2', 2500.00, 5000, '2022-12-28 02:33:48', '2022-12-28 02:33:48'),
+(13, 10, 28, '2', 100.00, 200, '2022-12-28 02:56:59', '2022-12-28 02:56:59'),
+(14, 11, 29, '2', 2500.00, 5000, '2022-12-28 03:01:25', '2022-12-28 03:01:25'),
+(17, 13, 29, '1', 2500.00, 2500, '2023-01-07 00:43:15', '2023-01-07 00:43:15'),
+(18, 13, 28, '2', 100.00, 200, '2023-01-07 00:43:15', '2023-01-07 00:43:15'),
+(19, 13, 30, '1', 27000.00, 27000, '2023-01-07 00:43:15', '2023-01-07 00:43:15'),
+(20, 14, 28, '1', 100.00, 100, '2023-01-07 07:56:02', '2023-01-07 07:56:02'),
+(21, 14, 28, '2', 100.00, 200, '2023-01-07 07:56:02', '2023-01-07 07:56:02'),
+(22, 14, 30, '3', 27000.00, 81000, '2023-01-07 07:56:03', '2023-01-07 07:56:03'),
+(23, 14, 28, '4', 100.00, 400, '2023-01-07 07:56:03', '2023-01-07 07:56:03'),
+(24, 15, 28, '1', 90.00, 90, '2023-01-07 09:17:08', '2023-01-07 09:17:08'),
+(25, 15, 29, '2', 2000.00, 4000, '2023-01-07 09:17:08', '2023-01-07 09:17:08'),
+(26, 15, 29, '3', 2000.00, 6000, '2023-01-07 09:17:08', '2023-01-07 09:17:08'),
+(27, 15, 28, '4', 90.00, 360, '2023-01-07 09:17:08', '2023-01-07 09:17:08'),
+(28, 15, 30, '5', 1999.00, 9995, '2023-01-07 09:17:08', '2023-01-07 09:17:08'),
+(29, 15, 29, '6', 2000.00, 12000, '2023-01-07 09:17:08', '2023-01-07 09:17:08'),
+(30, 15, 30, '7', 1999.00, 13993, '2023-01-07 09:17:08', '2023-01-07 09:17:08'),
+(31, 15, 29, '8', 2000.00, 16000, '2023-01-07 09:17:08', '2023-01-07 09:17:08'),
+(39, 18, 30, '1', 27000.00, 27000, '2023-01-08 05:39:17', '2023-01-08 05:39:17'),
+(40, 18, 29, '2', 2000.00, 4000, '2023-01-08 05:39:17', '2023-01-08 05:39:17'),
+(41, 18, 29, '3', 2000.00, 6000, '2023-01-08 05:39:17', '2023-01-08 05:39:17'),
+(42, 18, 28, '4', 90.00, 360, '2023-01-08 05:39:17', '2023-01-08 05:39:17');
 
 -- --------------------------------------------------------
 
@@ -456,7 +573,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Nw5ha7aGrfUNaXUThkLfAbKYHwp1HvpwvWVF6d2K', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiT0pOOGs3NTIwZTRMbVNFdjhHb3VPOVU1UzhtMG9YbVJSQ3VnNWVxdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zaGlwcGluZy9kaXZpc2lvbi92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozODoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL3VzZXIvb3JkZXIvdHJhY2siO31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJEFMYk1tR25xQ2VCZmxQLkpUOExXTnUvc3dzbWVydkYyVUZzc1VCQTNRS281MmM2Q3JBOVllIjt9', 1670645776);
+('h1S1o4fYhpAqEgOfdUXEqC14IqmkzsjSdKotHmfY', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRExZNjlzSG9oZXlWQWlxbHd6ck9DenVVT01DenBWelRvN0VLNjFQZyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9xdW90YXRpb24vaW52b2ljZV9kb3dubG9hZC8xOCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjE5OiJwYXNzd29yZF9oYXNoX2FkbWluIjtzOjYwOiIkMnkkMTAkV0Nmdkg2bGpiVmFUbEovYjc5R1FNTzAydEVVbjVqRm1qNWI1Q0tLcmRnSC5FeEUvRVBBVksiO30=', 1673180192),
+('rzmWYxSvEbmtxbpwlFlMcQFvmuQgRqROJjJL1FFH', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiQzRXUXVFSVc1QnBoTkNPdDBoRnYwQ1RxYWVNRkVVNVF2RjV1WlpGYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9xdW90YXRpb24vaW52b2ljZV9kb3dubG9hZC8xNSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE5OiJwYXNzd29yZF9oYXNoX2FkbWluIjtzOjYwOiIkMnkkMTAkQUxiTW1HbnFDZUJmbFAuSlQ4TFdOdS9zd3NtZXJ2RjJVRnNzVUJBM1FLbzUyYzZDckE5WWUiO30=', 1673105018);
 
 -- --------------------------------------------------------
 
@@ -641,7 +759,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `last_seen`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(9, 'fahmid', 'fahmidh27@gmail.com', '01964870827', NULL, '$2y$10$Zi.ngCri1I7EO6ZvGInfh.UT1NCC6TvCiN5RH9g.UPqVUutFC6cb6', '2022-08-06 10:18:32', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-06 02:52:03', '2022-08-06 04:18:32'),
+(9, 'fahmid', 'fahmidh27@gmail.com', '01964870827', NULL, '$2y$10$Zi.ngCri1I7EO6ZvGInfh.UT1NCC6TvCiN5RH9g.UPqVUutFC6cb6', '2023-01-08 09:44:00', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-06 02:52:03', '2023-01-08 03:44:00'),
 (10, 'mehdi', 'mehdi@gmail.com', '01964870827', NULL, '$2y$10$wdIv5BY/K2rYhBY.yc89xepU2LG6BU4YaKEHXmA6Jh9d1ElnGgFTq', '2022-08-20 08:15:04', NULL, NULL, NULL, NULL, NULL, '202208160633images.jfif', '2022-08-07 23:44:23', '2022-08-20 02:15:04'),
 (11, 'user', 'user@gmail.com', '01964870827', NULL, '$2y$10$HGluUJ0Wk77sdIcwuG6.OOSCbNKsTcMB1KIVO3UCnLy.UjOl6gKNy', '2022-12-03 07:44:37', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-11 23:55:30', '2022-12-03 01:44:37');
 
@@ -708,6 +826,12 @@ ALTER TABLE `coupons`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -764,6 +888,19 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `quotations`
+--
+ALTER TABLE `quotations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `quotation_items`
+--
+ALTER TABLE `quotation_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quotation_items_quotation_id_foreign` (`quotation_id`);
 
 --
 -- Indexes for table `reviews`
@@ -850,7 +987,7 @@ ALTER TABLE `wishlists`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `brands`
@@ -868,13 +1005,19 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -892,7 +1035,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `multi_imgs`
@@ -922,7 +1065,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `quotations`
+--
+ALTER TABLE `quotations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `quotation_items`
+--
+ALTER TABLE `quotation_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -999,6 +1154,12 @@ ALTER TABLE `wishlists`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `quotation_items`
+--
+ALTER TABLE `quotation_items`
+  ADD CONSTRAINT `quotation_items_quotation_id_foreign` FOREIGN KEY (`quotation_id`) REFERENCES `quotations` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `reviews`
