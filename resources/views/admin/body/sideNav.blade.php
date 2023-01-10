@@ -45,7 +45,7 @@
     $supplier = (auth()->guard('admin')->user()->supplier == 1);
     $quotation = (auth()->guard('admin')->user()->quotation == 1);
     $setting = (auth()->guard('admin')->user()->setting == 1);
-    $returnorder = (auth()->guard('admin')->user()->returnorder == 1);
+    $purchase = (auth()->guard('admin')->user()->purchase == 1);
     $review = (auth()->guard('admin')->user()->review == 1);
     $orders = (auth()->guard('admin')->user()->orders == 1);
     $locations = (auth()->guard('admin')->user()->locations == 1);
@@ -161,12 +161,31 @@
       </a>
       <ul class="treeview-menu">
         <li class="{{ ($route == 'supplier.view')? 'active':'' }}"><a href="{{ route('supplier.view') }}"><i class="ti-more"></i>Add Supplier</a></li>
-        {{-- <li class="{{ ($route == 'product.add')? 'active':'' }}"><a href="{{ route('manage-product') }}"><i class="ti-more"></i>View Products</a></li> --}}
+        <li class="{{ ($route == 'supplier.manage')? 'active':'' }}"><a href="{{ route('supplier.manage') }}"><i class="ti-more"></i>Manage Supplier</a></li>
          
       </ul>
     </li> 
 @else
 @endif		  
+
+
+@if($purchase == true)
+<li class="treeview {{ ($prefix == '/purchase')?'active':'' }}  ">
+  <a href="#">
+    <i data-feather="file"></i>
+    <span>Supplier</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-right pull-right"></i>
+    </span>
+  </a>
+  <ul class="treeview-menu">
+    <li class="{{ ($route == 'supplier.view')? 'active':'' }}"><a href="{{ route('purchase.view') }}"><i class="ti-more"></i>Add Purchase</a></li>
+    <li class="{{ ($route == 'purchase.manage')? 'active':'' }}"><a href="{{ route('purchase.manage') }}"><i class="ti-more"></i>Manage Purchase</a></li>
+     
+  </ul>
+</li> 
+@else
+@endif	
 
 
     @if($bank == true)

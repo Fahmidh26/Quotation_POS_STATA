@@ -607,6 +607,8 @@ Route::prefix('product')->group(function(){
         Route::get('/view', [SupplierController::class, 'SupplierView'])->name('supplier.view');
         
         Route::post('/store', [SupplierController::class, 'SupplierStore'])->name('supplier.store');
+
+        Route::get('/manage', [SupplierController::class, 'SupplierManage'])->name('supplier.manage');
         
         // Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
         
@@ -619,3 +621,24 @@ Route::prefix('product')->group(function(){
         // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
         
         });
+
+
+        Route::prefix('purchase')->group(function(){
+
+            Route::get('/view', [SupplierController::class, 'SupplierView'])->name('purchase.view');
+            
+            Route::post('/store', [SupplierController::class, 'SupplierStore'])->name('purchase.store');
+    
+            Route::get('/manage', [SupplierController::class, 'SupplierManage'])->name('purchase.manage');
+            
+            // Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
+            
+            // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+            
+            // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+            
+            // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+            
+            // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+            
+            });

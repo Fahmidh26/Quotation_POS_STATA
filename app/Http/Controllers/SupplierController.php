@@ -50,4 +50,9 @@ class SupplierController extends Controller
 		return redirect()->back()->with($notification);
     } // end method
 
+	public function SupplierManage(){
+		$suppliers = Supplier::latest()->get();
+		return view('admin.Backend.Supplier.supplier_manage' ,compact('suppliers'));
+	}
+
 }
