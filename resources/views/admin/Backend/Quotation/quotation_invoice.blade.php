@@ -60,8 +60,9 @@
         </td>
         <td align="right">
             <pre class="font" >
-              Bengal Automation
-               Email:statabangladesh@gmail.com <br>
+              STATA IT LIMITED 
+               Email:statabangladesh@gmail.com
+               <br>
                Mob: 88 09678200509 
             </pre>
         </td>
@@ -151,7 +152,9 @@
           <h3><span style="color: #169211;">Discount </span>
             
             <span style="font-size: 12px">
-              @if ($quotation->discount_percentage == NULL)
+              @if ($quotation->discount_percentage == NULL && $quotation->discount_flat == NULL)
+                TK 0
+            @elseif($quotation->discount_percentage == NULL)
                 TK {{ $quotation->discount_flat }}
             @else
                 {{ $quotation->discount_percentage  }}%
