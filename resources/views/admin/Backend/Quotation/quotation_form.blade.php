@@ -61,7 +61,7 @@
 				<table class="table table-bordered" id="table_field">
 					  <tr>
 						  <th>Item Information</th>
-						  <th>Description</th> 
+						  {{-- <th>Description</th>  --}}
 						  <th>Rate</th>
 						  <th>Qty</th>
 						  <th>Total</th>
@@ -80,7 +80,7 @@
 							{{-- <input class="form-control" type="text" name="txtFullname[]"
 						  required=""> --}}
 						</td>
-						  <td><input class="form-control" type="text" id="description" name="description[]" required=""></td>
+						  {{-- <td><input class="form-control" type="text" id="description" name="description[]" required=""></td> --}}
 						  <td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td>
 						  <td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""></td>
 						  <td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td>
