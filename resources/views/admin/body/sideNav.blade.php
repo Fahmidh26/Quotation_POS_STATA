@@ -41,8 +41,8 @@
     $category = (auth()->guard('admin')->user()->category == 1);
     $product = (auth()->guard('admin')->user()->product == 1);
     $customer = (auth()->guard('admin')->user()->customer == 1);
-    $coupons = (auth()->guard('admin')->user()->coupons == 1);
-    $shipping = (auth()->guard('admin')->user()->shipping == 1);
+    $bank = (auth()->guard('admin')->user()->bank == 1);
+    $supplier = (auth()->guard('admin')->user()->supplier == 1);
     $quotation = (auth()->guard('admin')->user()->quotation == 1);
     $setting = (auth()->guard('admin')->user()->setting == 1);
     $returnorder = (auth()->guard('admin')->user()->returnorder == 1);
@@ -147,8 +147,43 @@
           </ul>
         </li>
     @else
-    @endif     
-        
+    @endif 
+    
+    
+    @if($supplier == true)
+    <li class="treeview {{ ($prefix == '/supplier')?'active':'' }}  ">
+      <a href="#">
+        <i data-feather="file"></i>
+        <span>Supplier</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-right pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li class="{{ ($route == 'supplier.view')? 'active':'' }}"><a href="{{ route('supplier.view') }}"><i class="ti-more"></i>Add Supplier</a></li>
+        {{-- <li class="{{ ($route == 'product.add')? 'active':'' }}"><a href="{{ route('manage-product') }}"><i class="ti-more"></i>View Products</a></li> --}}
+         
+      </ul>
+    </li> 
+@else
+@endif		  
+
+
+    @if($bank == true)
+    <li class="treeview {{ ($prefix == '/bank')?'active':'' }}  ">
+     <a href="#">
+       <i data-feather="file"></i>
+       <span>Bank</span>
+       <span class="pull-right-container">
+         <i class="fa fa-angle-right pull-right"></i>
+       </span>
+     </a>
+     <ul class="treeview-menu">
+       <li class="{{ ($route == 'bank.view')? 'active':'' }}"><a href="{{ route('bank.view') }}"><i class="ti-more"></i>Manage Bank</a></li>
+     </ul>
+   </li> 
+@else
+@endif	
         
         
       </ul>

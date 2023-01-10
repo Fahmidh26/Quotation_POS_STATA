@@ -16,9 +16,11 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Backend\subCategoryController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\homePageController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CashController;
@@ -578,3 +580,42 @@ Route::prefix('product')->group(function(){
         // return the unit price as a JSON response
         return response()->json(['unitPrice' => $unitPrice]);
       });
+
+
+    //   ERPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+
+    Route::prefix('bank')->group(function(){
+    
+        Route::get('/view', [BankController::class, 'BankView'])->name('bank.view');
+        
+        Route::post('/store', [BankController::class, 'BankStore'])->name('bank.store');
+        
+        // Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
+        
+        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+        
+        // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+        
+        // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+        
+        // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+        
+        });
+
+    Route::prefix('supplier')->group(function(){
+
+        Route::get('/view', [SupplierController::class, 'SupplierView'])->name('supplier.view');
+        
+        Route::post('/store', [SupplierController::class, 'SupplierStore'])->name('supplier.store');
+        
+        // Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
+        
+        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+        
+        // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+        
+        // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+        
+        // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+        
+        });
