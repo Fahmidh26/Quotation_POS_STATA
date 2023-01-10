@@ -30,7 +30,7 @@ Signin
 						
 						<img class="img-fluid" src="{{ asset('frontend/assets/img/login.jpg') }}" alt="">
 						<div class="hover">
-							<h4>New to our website?</h4>
+							<h4>Old to our website?</h4>
 							<a class="primary-btn" href="{{ url('/register') }}">Create an Account</a>
 						</div>
 					</div>
