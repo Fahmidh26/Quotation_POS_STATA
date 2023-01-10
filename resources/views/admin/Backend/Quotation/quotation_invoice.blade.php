@@ -28,12 +28,12 @@
     }
     .authority h5 {
         margin-top: -10px;
-        color: #ff7c00;
+        color: #037c09;
         /*text-align: center;*/
         margin-left: 35px;
     }
     .thanks p {
-        color: #ff7c00;;
+        color: #136108;;
         font-size: 16px;
         font-weight: normal;
         font-family: serif;
@@ -50,12 +50,12 @@
 </head>
 <body>
 
-  <table width="100%" style="background: #F7F7F7; padding:0 10px 0 10px;">
+  <table width="100%" style="background: #f7f7f7; padding:0 10px 0 10px;">
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
           <br><br>
-          <img width="200px" height="72px" src="frontend/assets/img/logo1.png" alt="">
+          <img width="200px" height="72px" src="frontend/assets/img/logo2.png" alt="">
           {{-- <h2 style="color: #ff7c00; font-size: 26px;"><strong>Bengal Automation.</strong></h2> --}}
         </td>
         <td align="right">
@@ -82,7 +82,7 @@
         </td>
         <td>
           <p class="font" style="margin-left: 20px; margin-top:-12px">
-            <h3><span style="color: #ff7c00;">Invoice:</span> #{{ $quotation->invoice}}</h3>
+            <h3><span style="color: #106908;">Invoice:</span> #{{ $quotation->invoice}}</h3>
             <strong>Quotation Date:</strong> {{ $quotation->quotation_date }} <br>
             <strong>Expiry Date:</strong> {{ $quotation->expire_date }} <br>
          </p>
@@ -92,7 +92,7 @@
   <br/>
 <h3>Product List</h3>
   <table class="t" width="100%">
-    <thead style="background-color: #ff7c00; color:#FFFFFF;">
+    <thead style="background-color: #17810e; color:#FFFFFF;">
       <tr class="font">
         <th class="t">SL.</th>
         <th class="t">Product Name</th>
@@ -147,8 +147,8 @@
         <td align="right" >
          
           <hr>  
-          <h3><span style="color: #ff7c00;">Sub Total </span> <span style="font-size: 12px">{{ $quotation->sub_total }}</span></h3>
-          <h3><span style="color: #ff7c00;">Discount </span>
+          <h3><span style="color: #11790d;">Sub Total </span> <span style="font-size: 12px">{{ $quotation->sub_total }}</span></h3>
+          <h3><span style="color: #169211;">Discount </span>
             
             <span style="font-size: 12px">
               @if ($quotation->discount_percentage == NULL)
@@ -158,12 +158,12 @@
             @endif
             </span>
           </h3>
-          <h3><span style="color: #ff7c00;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3>
+          <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3>
 
-            <h3><span style="color: #ff7c00;">Grand Total</span> <span style="font-size: 12px"> TK {{ $quotation->grand_total }}</span></h3>
+            <h3><span style="color: #26810f;">Grand Total</span> <span style="font-size: 12px"> TK {{ $quotation->grand_total }}</span></h3>
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
             <hr>
-            <h3><span style="color: #ff7c00;">Net Total</span> <span style="font-size: 15px"> TK {{ $quotation->grand_total }}</span></h3>
+            <h3><span style="color: #26810f;">Net Total</span> <span style="font-size: 15px"> TK {{ $quotation->grand_total }}</span></h3>
         </td>
 
     </tr>
@@ -173,7 +173,7 @@
     </tr>
   </table>
   <div class="seal" style="margin:10px 50px">
-    <img width="120" height="122" src="frontend/assets/img/authorized-seal.png" alt="">
+    <img width="120" height="122" src="frontend/assets/img/auth_seal.png" alt="">
   </div>
   
   {{-- <div class="thanks mt-3">
