@@ -20,8 +20,8 @@
             <tr>
               <th>Name </th>
               <th>Address</th>
-              <th>Phone</th>
               <th>Email</th>
+              <th>Phone</th>
               <th>Action</th>
                
             </tr>
