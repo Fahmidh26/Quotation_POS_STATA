@@ -58,7 +58,7 @@
   background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
   background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
   background: -o-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-  background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%); }
+  background: linear-gradient(90deg, #00ff00 0%, #237c08 100%); }
 
 .gradient-bg-reverse, #search_input_box {
   background: -webkit-linear-gradient(270deg, #ffba00 0%, #ff6c00 100%);
@@ -1282,7 +1282,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #222222; }
 
 .organic-breadcrumb {
-  background: url(../img/banner/common-banner.jpg) center no-repeat;
+  background: url(../img/banner/banner.png) center no-repeat;
   background-size: cover;
   padding-top: 130px; }
   @media (max-width: 991px) {
