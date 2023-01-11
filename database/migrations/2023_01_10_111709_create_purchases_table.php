@@ -20,15 +20,14 @@ return new class extends Migration
             $table->string('chalan_no');
             $table->date('purchase_date')->nullable();
             $table->text('details')->nullable();
-            $table->float('paid_amount',8,2);  
             $table->float('sub_total',8,2);  
             $table->float('grand_total',8,2);  
-            $table->string('purchase_discount');
-            $table->string('total_discount');
-            $table->string('total_vat');
-            $table->string('paid_amount');
-            $table->string('due_discount');
-            
+            $table->string('purchase_discount')->nullable();;
+            $table->string('total_discount')->nullable();;
+            $table->string('total_vat')->nullable();;
+            $table->string('p_paid_amount');
+            $table->string('due_amount');
+            $table->string('status');
             $table->timestamps();
         });
     }

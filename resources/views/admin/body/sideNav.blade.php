@@ -173,13 +173,13 @@
 <li class="treeview {{ ($prefix == '/purchase')?'active':'' }}  ">
   <a href="#">
     <i data-feather="file"></i>
-    <span>Supplier</span>
+    <span>Purchase</span>
     <span class="pull-right-container">
       <i class="fa fa-angle-right pull-right"></i>
     </span>
   </a>
   <ul class="treeview-menu">
-    <li class="{{ ($route == 'supplier.view')? 'active':'' }}"><a href="{{ route('purchase.view') }}"><i class="ti-more"></i>Add Purchase</a></li>
+    <li class="{{ ($route == 'purchase.view')? 'active':'' }}"><a href="{{ route('purchase.view') }}"><i class="ti-more"></i>Add Purchase</a></li>
     <li class="{{ ($route == 'purchase.manage')? 'active':'' }}"><a href="{{ route('purchase.manage') }}"><i class="ti-more"></i>Manage Purchase</a></li>
      
   </ul>

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('payment_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('purchase_id');
+            $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade');
+            $table->unsignedBigInteger('bank_id');
+            $table->float('b_paid_amount',8,2);
             $table->timestamps();
         });
     }

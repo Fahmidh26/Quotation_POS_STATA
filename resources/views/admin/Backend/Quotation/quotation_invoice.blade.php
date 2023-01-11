@@ -86,6 +86,7 @@
             <h3><span style="color: #106908;">Invoice:</span> #{{ $quotation->invoice}}</h3>
             <strong>Quotation Date:</strong> {{ $quotation->quotation_date }} <br>
             <strong>Expiry Date:</strong> {{ $quotation->expire_date }} <br>
+            <strong>Made By:</strong> {{ $quotation->auth->name }} <br>
          </p>
         </td>
     </tr>

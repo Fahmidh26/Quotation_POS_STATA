@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\subCategoryController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\homePageController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\User\AllUserController;
@@ -625,7 +626,7 @@ Route::prefix('product')->group(function(){
 
         Route::prefix('purchase')->group(function(){
 
-            Route::get('/view', [SupplierController::class, 'SupplierView'])->name('purchase.view');
+            Route::get('/view', [PurchaseController::class, 'PurchaseForm'])->name('purchase.view');
             
             Route::post('/store', [SupplierController::class, 'SupplierStore'])->name('purchase.store');
     
