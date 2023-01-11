@@ -39,12 +39,12 @@
 				</div>
 				<div class="col">
 					<div class="row mb-3">
-						<div class="col-2"><label>Purchase Date</label></div>
+						<div class="col-2"><label>Quotation Date</label></div>
 						<div class="col"><input class="form-control mb-3" type="date" id="quoDate" name="quoDate"></div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-2"><label>Expire Date</label></div>
-						<div class="col"><input class="form-control mb-3" type="date" id="expDate" name="expDate"></div>
+						<div class="col-2"><label>Details</label></div>
+						<div class="col"><input class="form-control mb-3" type="text" id="details" name="details"></div>
 					</div>
 					<div class="row mb-3">
 						<div class="col"><input class="form-control mb-3" type="hidden" id="auth_id" name="auth_id"  value="{{ Auth::id()}}">
@@ -52,10 +52,6 @@
 					</div>
 			
 				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="col-1"><label>Details</label></div>
-				<div class="col"><input class="form-control mb-3" type="text" id="details" name="details"></div>
 			</div>
 			<div class="input-field">
 				<table class="table table-bordered" id="table_field">
