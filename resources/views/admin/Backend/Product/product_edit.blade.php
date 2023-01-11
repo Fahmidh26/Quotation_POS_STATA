@@ -19,10 +19,10 @@
 			  <div class="row">
 				<div class="col">
 
-  <form method="post" action="{{ route('product-store') }}">
+  <form method="post" action="{{ route('product-update') }}">
 		 	@csrf
 
-	<div class="row">
+					  <div class="row">
 	<div class="col-12">	
 
 
@@ -33,7 +33,7 @@
 	<h6>Category<span class="text-danger">*</span></h6>
 	<div class="controls">
 		<select name="category_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select Category</option>
+			<option value="{{ $products->category->id }}" selected="" disabled="">{{ $products->category->category_name }}</option>
 			@foreach($categories as $category)
  <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
 			@endforeach
@@ -50,7 +50,7 @@
 				<div class="form-group">
 					<h6>Product Name<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<input type="text" name="product_name" class="form-control" required="">
+						<input type="text" value="{{$products->product_name}}" name="product_name" class="form-control" required="">
 			 @error('product_name') 
 			 <span class="text-danger">{{ $message }}</span>
 			 @enderror
@@ -67,7 +67,7 @@
 	  <div class="form-group">
 			<h6>Product Code <span class="text-danger">*</span></h6>
 			<div class="controls">
-				<input type="text" name="product_code" class="form-control" required="">
+				<input type="text" value="{{$products->product_code}}" name="product_code" class="form-control" required="">
      @error('product_code') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -80,7 +80,7 @@
 				<div class="form-group">
 					<h6>Product Selling Price <span class="text-danger">*</span></h6>
 					<div class="controls">
-						<input type="text" name="selling_price" class="form-control" required="">
+						<input type="text" value="{{$products->selling_price}}" name="selling_price" class="form-control" required="">
 			 @error('selling_price') 
 			 <span class="text-danger">{{ $message }}</span>
 			 @enderror
@@ -103,7 +103,7 @@
 	    <div class="form-group">
 			<h6>Product Discount Price <span class="text-danger">*</span></h6>
 			<div class="controls">
-	 <input type="text" name="discount_price" class="form-control" >
+	 <input type="text" value="{{$products->discount_price}}" name="discount_price" class="form-control" >
      @error('discount_price') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -121,7 +121,7 @@
 	 
 	 <hr>				 
 						<div class="text-xs-right">
-<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
+<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Product">
 						</div>
 					</form>
 

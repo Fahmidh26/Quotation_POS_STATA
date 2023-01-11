@@ -42,12 +42,12 @@ class AdminUserController extends Controller
 		'category' => $request->category,
 		'product' => $request->product,
 		'customer' => $request->slider,
-		'coupons' => $request->coupons,
+		'bank' => $request->coupons,
 
-		'shipping' => $request->shipping,
+		'supplier' => $request->shipping,
 		'quotation' => $request->quotation,
 		'setting' => $request->setting,
-		'returnorder' => $request->returnorder,
+		'purchase' => $request->returnorder,
 		'review' => $request->review,
 
 		'locations' => $request->locations,

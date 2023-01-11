@@ -123,13 +123,13 @@
 			</fieldset>
 
 			<fieldset>
-				<input type="checkbox" id="checkbox_5" name="slider" value="1">
-				<label for="checkbox_5">Slider</label>
+				<input type="checkbox" id="checkbox_5" name="customer" value="1">
+				<label for="checkbox_5">customer</label>
 			</fieldset>
 
 			<fieldset>
-				<input type="checkbox" id="checkbox_6" name="coupons" value="1">
-				<label for="checkbox_6">Coupons</label>
+				<input type="checkbox" id="checkbox_6" name="bank" value="1">
+				<label for="checkbox_6">bank</label>
 			</fieldset>
 		</div>
 	</div>
@@ -142,8 +142,8 @@
 
 		<div class="controls">
 			<fieldset>
-				<input type="checkbox" id="checkbox_7" name="shipping" value="1">
-				<label for="checkbox_7">Shipping</label>
+				<input type="checkbox" id="checkbox_7" name="supplier" value="1">
+				<label for="checkbox_7">supplier</label>
 			</fieldset>
 			<fieldset>
 				<input type="checkbox" id="checkbox_8" name="quotation" value="1">
@@ -157,8 +157,8 @@
 
 
 			<fieldset>
-				<input type="checkbox" id="checkbox_10" name="returnorder" value="1">
-				<label for="checkbox_10">Return Order</label>
+				<input type="checkbox" id="checkbox_10" name="purchase" value="1">
+				<label for="checkbox_10">Purchase</label>
 			</fieldset>
 
 			<fieldset>
