@@ -76,39 +76,25 @@ class productController extends Controller
 
 		$product_id = $request->id;
 
+		$discount = ($request->selling_price) - ($request->discount_price);
+
          Product::findOrFail($product_id)->update([
-      	'brand_id' => $request->brand_id,
-      	'category_id' => $request->category_id,
-      	'subcategory_id' => $request->subcategory_id,
-      	'product_name' => $request->product_name,
-
-      	'product_code' => $request->product_code,
-
-      	'product_qty' => $request->product_qty,
-      	'product_tags' => $request->product_tags,
-      	'product_size' => $request->product_size,
-
-      	'product_color' => $request->product_color,
-
-
-      	'selling_price' => $request->selling_price,
-      	'discount_price' => $request->discount_price,
-      	'short_descp' => $request->short_descp,
-
-      	'long_descp' => $request->long_descp,
-		'video_link' => $request->video_link,
-
-      	'new' => $request->new,
-      	'sale' => $request->sale,
-      	'best_seller' => $request->best_seller,
-      	'combo' => $request->combo,      	 
-      	'status' => 1,
-      	'created_at' => Carbon::now(),   
-
+			'category_id' => $request->category_id,
+			'product_name' => $request->product_name,
+			'product_code' => $request->product_code,
+  
+			'selling_price' => $request->selling_price,
+			'discount_price' => $request->discount_price,
+		  
+		  
+		  	'discount' => null,
+	  
+			'status' => 1,
+			'created_at' => Carbon::now(),   
       ]);
 
           $notification = array(
-			'message' => 'Product Updated Without Image Successfully',
+			'message' => 'Product Updated Successfully',
 			'alert-type' => 'success'
 		);
 

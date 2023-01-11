@@ -28,18 +28,18 @@
 						</div>
 	
 						<div class="row mb-3">
-							<div class="col-2"><label>Phone</label></div>
+							<div class="col-2"><label>Chalan No.</label></div>
 							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone" readonly></div>
 						</div>
 	
-						<div class="row mb-3">
+						{{-- <div class="row mb-3">
 							<div class="col-2"><label>Address</label></div>
 							<div class="col"><input class="form-control mb-3" type="text" id="address" name="address" readonly></div>
-						</div>
+						</div> --}}
 				</div>
 				<div class="col">
 					<div class="row mb-3">
-						<div class="col-2"><label>Quotation Date</label></div>
+						<div class="col-2"><label>Purchase Date</label></div>
 						<div class="col"><input class="form-control mb-3" type="date" id="quoDate" name="quoDate"></div>
 					</div>
 					<div class="row mb-3">

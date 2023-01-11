@@ -28,8 +28,11 @@
 
 		<div class="row"> <!-- start 1st row  -->
 			<div class="col-md-4">
-
-	 <div class="form-group">
+		
+				<input type="text" hidden value="{{$products->id}}" name="id" 
+				class="form-control" >
+	 
+				<div class="form-group">
 	<h6>Category<span class="text-danger">*</span></h6>
 	<div class="controls">
 		<select name="category_id" class="form-control" required="" >
