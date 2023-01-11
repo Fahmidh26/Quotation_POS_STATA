@@ -31,6 +31,8 @@
 		
 				<input type="text" hidden value="{{$products->id}}" name="id" 
 				class="form-control" >
+				<input type="text" hidden value="{{$products->qty}}" name="qty" 
+				class="form-control" >
 	 
 				<div class="form-group">
 	<h6>Category<span class="text-danger">*</span></h6>

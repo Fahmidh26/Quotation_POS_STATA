@@ -32,7 +32,7 @@ class productController extends Controller
 
       	'selling_price' => $request->selling_price,
       	'discount_price' => $request->discount_price,
-		
+		'qty' => 0,
 		
 		'discount' => $discount,
 	
@@ -75,17 +75,22 @@ class productController extends Controller
 	public function ProductDataUpdate(Request $request){
 
 		$product_id = $request->id;
-
+		$quantity = null;
+		
+		if($request->qty != null){
+			$quantity = $request->qty;
+		}else{
+			$quantity = null;
+		}
 		$discount = ($request->selling_price) - ($request->discount_price);
 
          Product::findOrFail($product_id)->update([
 			'category_id' => $request->category_id,
 			'product_name' => $request->product_name,
 			'product_code' => $request->product_code,
-  
 			'selling_price' => $request->selling_price,
 			'discount_price' => $request->discount_price,
-		  
+			'qty' => $quantity,
 		  
 		  	'discount' => null,
 	  
