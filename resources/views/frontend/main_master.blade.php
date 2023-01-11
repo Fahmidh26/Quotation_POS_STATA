@@ -16,7 +16,7 @@ $seo = App\Models\Seo::find(1);
 <meta name="robots" content="all">
 
 {{-- Favicon --}}
-<link rel="icon"  href="{{ asset('frontend/assets/img/fav.png') }}">
+<link rel="icon"  href="{{ asset('frontend/assets/img/fav1.png') }}">
 
 <!-- /// Google Analytics Code // -->
 <script>
