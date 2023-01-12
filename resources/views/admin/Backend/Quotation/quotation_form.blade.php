@@ -113,9 +113,20 @@
 							<div class="col"><input class="dflat form-control" name="dflat" type="number" id="discount-flat">
 							</div>
 						</div>
+
 						<div class="row mb-3">
-							<div class="col-4"><label>Grand Total</label></div>
-							<div class="col"><input class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
+							<div class="col-4"><label>Paid Amount</label></div>
+							<div class="col"><input class="form-control" type="text" name="paidamount" id="paidamount">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-4"><label>Due Amount</label></div>
+							<div class="col"><input class="form-control" type="text" name="dueamount" id="dueamount" readonly>
+							</div>
+						</div>
+						<div class="row mb-3">
+							{{-- <div class="col-4"><label>Grand Total</label></div> --}}
+							<div class="col"><input hidden class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
 							</div>
 						</div>
 					
@@ -245,7 +256,7 @@
 		$.get('/get-price', { option: product_id }, function(data) {
         // update the field with the response data
 		if(data.discount_price == null){
-			price.val(data.selling_price);
+			price.val(data.selling_price);grand
 		}else{
 			price.val(data.discount_price);
 		}
@@ -254,6 +265,16 @@
 		// price.val(product_id);
                
     });
+
+	document.querySelector('#paidamount').addEventListener('input', function() {
+		$("#dueamount").val("");
+ 		var paidamount = this.value;
+		var grandtotal = document.getElementById("grandtotal").value;
+		var duetotal = grandtotal - paidamount;
+		$("#dueamount").val(duetotal);
+		console.log(discount);
+  // Now you can use the inputValue variable to access the value of the input element
+	});
 
 	// $("select[name='item[]']").each(function() {
 	// 	var selectedOption = $(this).val();

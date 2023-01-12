@@ -38,6 +38,8 @@ class QuotationController extends Controller
             'discount_flat' => $request->dflat,
             'vat_percentage' => $request->vper,
             'vat_amount' => $request->vper,
+            'paid_amount' => $request->paidamount,
+            'due_amount' => $request->dueamount,
             'total_discount' => $request->dflat,
             'details' => $request->details,
             'created_at' => Carbon::now(),   
