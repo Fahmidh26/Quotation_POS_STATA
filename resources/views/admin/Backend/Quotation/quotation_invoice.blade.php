@@ -133,7 +133,7 @@
         </td>
         <td class="t" align="center">
             {{-- @if ($item->product->discount_price == NULL) --}}
-            TK {{ $item->product->selling_price  }}
+            TK {{ $item->price  }}
             {{-- @else
             TK {{ $item->product->discount_price  }}
             @endif --}}
@@ -180,8 +180,14 @@
            
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
             <hr>
-            <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK {{ $quotation->paid_amount }}</span></h3>
-            <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $quotation->due_amount }}</span></h3>
+            @if ( $quotation->paid_amount == null)
+              <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK 0</span></h3>
+              <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $quotation->grand_total }}</span></h3>
+            @else
+              <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK {{$quotation->paid_amount}}</span></h3>
+              <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $quotation->due_amount }}</span></h3>
+            @endif
+          
         </td>
 
     </tr>

@@ -24,7 +24,8 @@
 									 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>	
 							@endforeach
 							<!-- More options -->
-							</select></div>
+							</select>
+						</div>
 						</div>
 	
 						<div class="row mb-3">
@@ -69,16 +70,13 @@
 					</tr>
 					<tr>
 						  <td>
-							<select id="item" name="item[]" class="form-control" required="" >
+							<select id="item" name="item[]" class="form-control selectpicker" required="" data-live-search="true">
 								<option value="" selected="" disabled="">Select Product</option>
 								@foreach($products as $product)
-									 <option value="{{ $product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>	
+									 <option data-tokens="{{ $product->product_name }}" value="{{ $product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>	
 								@endforeach
 							</select>
 
-							
-							{{-- <input class="form-control" type="text" name="txtFullname[]"
-						  required=""> --}}
 						</td>
 						  {{-- <td><input class="form-control" type="text" id="description" name="description[]" required=""></td> --}}
 						  <td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td>
@@ -142,9 +140,14 @@
 	<!-- /.content -->
   
   </div>
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+{{-- test --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
+{{-- test --}}
+  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> --}}
 
   <script>
 	// Add a search field to the dropdown
@@ -158,7 +161,7 @@
   
   <script>
 	$(document).ready(function(){
-		var html='<tr><td><select id="item" name="item[]" class="form-control" required=""><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option value="{{ $product->id }}">{{ $product->product_name }}({{$product->product_code}})</option>@endforeach</select></td><td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td><td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""><td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="remove"></td></tr>';
+		var html='<tr><td><select id="item" name="item[]" class="form-control selectpicker[]" required="" data-live-search="true"><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option data-tokens="{{ $product->product_name }}" value="{{$product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>@endforeach</select></td><td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td><td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""><td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="remove"></td></tr>';
 		var x =1;
 	  $("#add").click(function(){
 		$("#table_field").append(html);
@@ -281,6 +284,13 @@
 	// 	console.log('hello');
 		
 	// });
+	// $(function() {
+	// 	$('.selectpicker').selectpicker();
+	// });
+
+	$(document).on('focus', '.selectpicker', function(){
+    $(this).selectpicker();
+	});
 
 	});
 </script>
