@@ -26,12 +26,25 @@
         /*text-align: center;*/
         float: right
     }
+
+    .authority1 {
+        /*text-align: center;*/
+        float: left
+    }
     .authority h5 {
         margin-top: -10px;
         color: #037c09;
         /*text-align: center;*/
         margin-left: 35px;
     }
+
+    .authority1 h5 {
+        margin-top: -10px;
+        color: #037c09;
+        /*text-align: center;*/
+        margin-left: 35px;
+    }
+    
     .thanks p {
         color: #136108;;
         font-size: 16px;
@@ -78,7 +91,7 @@
            <strong>Name:</strong> {{ $quotation->customer->customer_name }}<br>
            <strong>Email:</strong> {{ $quotation->customer->email }} <br>
            <strong>Phone:</strong> {{  $quotation->customer->phone }} <br>
-           <strong>Address:</strong>{{  $quotation->customer->address  }}
+           <strong>Address:</strong> {{  $quotation->customer->address  }}
          </p>
         </td>
         <td>
@@ -177,16 +190,21 @@
        <td><b> Quotation Details : </b>{{$quotation->details}}</td> 
     </tr>
   </table>
-  <div class="seal" style="margin:10px 50px">
-    <img width="120" height="122" src="frontend/assets/img/auth_seal.png" alt="">
-  </div>
   
   {{-- <div class="thanks mt-3">
     <p>Thanks For Buying Products..!!</p>
   </div> --}}
+  <div class="authority1 float-left" style="margin-top:150px">
+  <p>-----------------------------------</p>
+  <h5>Customer Signature:</h5>
+  </div>
   <div class="authority float-right">
+    <div class="seal">
+      <img width="110" height="112" src="frontend/assets/img/auth_seal.png" alt="">
+    </div>
+    <br>
       <p>-----------------------------------</p>
       <h5>Authority Signature:</h5>
-    </div>
+  </div>
 </body>
 </html> 
