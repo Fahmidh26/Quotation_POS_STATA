@@ -113,7 +113,11 @@
 							<div class="col"><input class="dflat form-control" name="dflat" type="number" id="discount-flat">
 							</div>
 						</div>
-
+						<div class="row mb-3">
+							<div class="col-4"><label>Grand Total</label></div>
+							<div class="col"><input class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
+							</div>
+						</div>
 						<div class="row mb-3">
 							<div class="col-4"><label>Paid Amount</label></div>
 							<div class="col"><input class="form-control" type="text" name="paidamount" id="paidamount">
@@ -124,11 +128,7 @@
 							<div class="col"><input class="form-control" type="text" name="dueamount" id="dueamount" readonly>
 							</div>
 						</div>
-						<div class="row mb-3">
-							{{-- <div class="col-4"><label>Grand Total</label></div> --}}
-							<div class="col"><input hidden class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
-							</div>
-						</div>
+
 					
 					</div>
 				</div>
