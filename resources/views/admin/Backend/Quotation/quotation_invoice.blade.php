@@ -164,10 +164,11 @@
           </h3>
           <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3>
 
-            <h3><span style="color: #26810f;">Grand Total</span> <span style="font-size: 12px"> TK {{ $quotation->grand_total }}</span></h3>
+           
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
             <hr>
-            <h3><span style="color: #26810f;">Net Total</span> <span style="font-size: 15px"> TK {{ $quotation->grand_total }}</span></h3>
+            <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK {{ $quotation->paid_amount }}</span></h3>
+            <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $quotation->due_amount }}</span></h3>
         </td>
 
     </tr>
