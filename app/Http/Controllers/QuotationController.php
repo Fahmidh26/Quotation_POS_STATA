@@ -26,6 +26,16 @@ class QuotationController extends Controller
 
     public function saveUser(Request $request)
     {
+        $request->validate([
+    		'customer_id' => 'required',
+    		'quoDate' => 'required',
+            'expDate' => 'required',
+    	],[
+    		'customer_id.required' => 'Please Select a Customer',
+            'quoDate.required' => 'Please Enter Quotation Date',
+            'expDate.required' => 'Please Enter Quotation Expiry Date',
+    	]);
+
         $quotation_id = Quotation::insertGetId([
             'customer_id' => $request->customer_id,
             'auth_id' => $request->auth_id,

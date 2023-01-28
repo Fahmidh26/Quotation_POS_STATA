@@ -10,18 +10,17 @@
 
 	<!-- Main content -->
 	<section class="content">
-		<form class="insert-form" id="insert_form" method="post" action="{{ route('repeater') }}">
+		<form class="insert-form" id="insert_form" method="post" action="{{ route('purchase.store') }}">
 			@csrf
-	
 			<div class="row">
 				<div class="col">
 					<div class="row mb-3">
 						<div class="col-2"><label for="mySelect">Supplier</label></div>
 						<div class="col"><input type="text" id="mySearch" class="form-control mb-3" placeholder="Search Supplier">
-							<select id="mySelect" name="customer_id" class="form-control">
+							<select id="mySelect" name="supplier_id" class="form-control">
 							<option value="" selected="" disabled="">Select Supplier</option>
 							@foreach($suppliers as $supplier)
-									 <option value="{{ $supplier->id }}">{{ $supplier->customer_name }}</option>	
+									 <option value="{{ $supplier->id }}">{{ $supplier->supplier_name }}</option>	
 							@endforeach
 							<!-- More options -->
 							</select></div>
@@ -29,7 +28,7 @@
 	
 						<div class="row mb-3">
 							<div class="col-2"><label>Chalan No.</label></div>
-							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone" readonly></div>
+							<div class="col"><input class="form-control mb-3" type="text" id="chalan" name="chalan"></div>
 						</div>
 	
 						{{-- <div class="row mb-3">
@@ -56,12 +55,17 @@
 			<div class="input-field">
 				<table class="table table-bordered" id="table_field">
 					  <tr>
-						  <th>Item Information</th>
-						  {{-- <th>Description</th>  --}}
-						  <th>Rate</th>
-						  <th>Qty</th>
-						  <th>Total</th>
-						  <th>Add or Remove</th>
+						<th>Item Information</th>
+						<th>Stock/Qnt</th> 
+						<th>Batch No.</th>
+						<th>Qnty</th>
+						<th>Rate</th>
+						{{-- <th>Discount</th>
+						<th>Dis. Value</th>
+						<th>Vat %</th>
+						<th>VAT Value</th> --}}
+						<th>Total</th>
+						<th>Action</th>
 					</tr>
 					<tr>
 						  <td>
@@ -72,14 +76,12 @@
 								@endforeach
 							</select>
 
-							
-							{{-- <input class="form-control" type="text" name="txtFullname[]"
-						  required=""> --}}
 						</td>
-						  {{-- <td><input class="form-control" type="text" id="description" name="description[]" required=""></td> --}}
-						  <td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td>
-						  <td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""></td>
-						  <td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td>
+						  <td><input class="form-control stock" type="text" id="stock" name="stock[]" required="" readonly></td>
+						  <td><input class="form-control batch" type="text" id="batch" name="batch[]" required=""></td>
+						  <td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td>
+						  <td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td>
+						  <td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td>
 						  <td><input class="btn btn-warning" type="button" name="add" id="add" value="Add"></td>
 					</tr>
 				</table>
@@ -101,7 +103,7 @@
 						</div>
 						<div class="row mb-3">
 							<div class="col-4"><label>VAT (%)</label></div>
-							<div class="col"><input class="vper form-control" type="number" id="vat-percentage" name="">
+							<div class="col"><input class="vper form-control" type="number" id="vat-percentage" name="vper" readonly>
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -114,10 +116,47 @@
 							<div class="col"><input class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
 							</div>
 						</div>
+						<div class="row mb-3">
+							<div class="col-4"><label>Paid Amount</label></div>
+							<div class="col"><input class="form-control" type="number" name="paidamount" id="paidamount">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-4"><label>Due Amount</label></div>
+							<div class="col"><input class="form-control" type="text" name="dueamount" id="dueamount" readonly>
+							</div>
+						</div>
+
 					
 					</div>
 				</div>
-				
+				<div class="row">
+					<div class="col">
+						<table class="table table-bordered" id="table_fieldpayment">
+							<tr>
+							  <th>Payment Type</th>
+							  <th>Paid Amount</th>
+							  <th>Action</th>
+						  </tr>
+						  <tr>
+								<td>
+								  <select id="payitem" name="payitem[]" class="form-control" required="" >
+									  <option value="" selected="" disabled="">Select Product</option>
+									  @foreach($banks as $payment)
+										   <option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>	
+									  @endforeach
+								  </select>	  
+							  </td>
+								<td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td>
+								<td><input class="btn btn-warning" type="button" name="addpay" id="addpay" value="Add"></td>
+								<input class="form-control sumPayment" type="text" name="sumPayment" id="sumPayment" readonly>
+						  </tr>
+					  </table>
+					</div>
+					<div class="col">				
+					</div>
+				</div>
+
 					<input class="btn btn-success" type="submit" name="save" id="save" value="
 					Save Quotation">
 	
@@ -143,7 +182,8 @@
   
   <script>
 	$(document).ready(function(){
-		var html='<tr><td><select id="item" name="item[]" class="form-control" required=""><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option value="{{ $product->id }}">{{ $product->product_name }}({{$product->product_code}})</option>@endforeach</select></td><td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td><td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""><td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="remove"></td></tr>';
+		var html='<tr> <td><select id="item" name="item[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product) <option value="{{ $product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>	@endforeach</select></td><td><input class="form-control stock" type="text" id="stock" name="stock[]" required="" readonly></td><td><input class="form-control batch" type="text" id="batch" name="batch[]" required=""></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="remove"></td></tr>';
+	
 		var x =1;
 	  $("#add").click(function(){
 		$("#table_field").append(html);
@@ -151,20 +191,32 @@
 	  $("#table_field").on('click', '#remove', function () {
     $(this).closest('tr').remove();
 	});
+
+	var htmlpay='<tr><td><select id="payitem" name="payitem[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($banks as $payment)<option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>@endforeach</select></td><td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td><td><input class="btn btn-danger" type="button" name="payremove" id="payremove" value="remove"></td></tr>';
+
+		var x =1;
+	  $("#addpay").click(function(){
+		$("#table_fieldpayment").append(htmlpay);
+	  });
+	  $("#table_fieldpayment").on('click', '#payremove', function () {
+    $(this).closest('tr').remove();
+	});
 	
-	$("#table_field tbody").on("input", ".unit_price", function () {
-                var unit_price = parseFloat($(this).val());
-                var qty = parseFloat($(this).closest("tr").find(".qty").val());
+	$("#table_field tbody").on("input", ".rate", function () {
+                var rate = parseFloat($(this).val());
+                var qnty = parseFloat($(this).closest("tr").find(".qnty").val());
                 var total = $(this).closest("tr").find(".total");
-                total.val(unit_price * qty);
+                total.val(qnty * rate);
 				totalPrice();
+				duePrice();
             });
-	$("#table_field tbody").on("input", ".qty", function () {
-		var qty = parseFloat($(this).val());
-		var unit_price = parseFloat($(this).closest("tr").find(".unit_price").val());
+	$("#table_field tbody").on("input", ".qnty", function () {
+		var qnty = parseFloat($(this).val());
+		var rate = parseFloat($(this).closest("tr").find(".rate").val());
 		var total = $(this).closest("tr").find(".total");
-		total.val(unit_price * qty);
+		total.val(rate * qnty);
 		totalPrice();
+		duePrice();
 	});
 	// $("#discount-percentage").on("input", ".dper", function () {
 	// 	var discount_value = this.value;
@@ -173,6 +225,23 @@
 	// 	$("#grandtotal").val(discount);
 	// 	console.log(discount);
 	// });
+
+	$("#table_fieldpayment tbody").on("input", ".pay_amount", function () {
+                // var amount = parseFloat($(this).val());
+                // var qnty = parseFloat($(this).closest("tr").find(".qnty").val());
+                // var total = $(this).closest("tr").find(".total");
+                // total.val(qnty * rate);
+				// totalPrice();
+				totalPayment();
+				duePrice();
+
+	      });
+
+		  function duePrice(){
+			$("#paidamount").val($("#sumPayment").val());
+			$("#dueamount").val(($("#grandtotal").val()) - ($("#sumPayment").val()));
+		  }
+
 	function totalPrice(){
 		var sum = 0;
 	
@@ -182,6 +251,16 @@
 		$("#grandtotal").val(sum);
 		$("#subtotal").val(sum);	
 	}
+
+	function totalPayment(){
+		var sum = 0;
+	
+		$(".pay_amount").each(function(){
+		sum += parseFloat($(this).val());
+		});
+
+		$("#sumPayment").val(sum);
+	}
 	
 	document.querySelector('#discount-percentage').addEventListener('input', function() {
 		$("#discount-flat").val("");
@@ -189,6 +268,7 @@
 		var grandtotal = document.getElementById("subtotal").value;
 		var discount = grandtotal - (discount_value / 100) * grandtotal;
 		$("#grandtotal").val(discount);
+		duePrice();
 		console.log(discount);
   // Now you can use the inputValue variable to access the value of the input element
 	});
@@ -199,6 +279,7 @@
 		var discount = grandtotal - discount_value;
 		$("#grandtotal").val(discount);
 		console.log(discount);
+		duePrice();
   // Now you can use the inputValue variable to access the value of the input element
 	});
 
@@ -224,32 +305,43 @@
       });
     });
 
-	// $("#item").change(function() {
-    //   // get the selected option value
-    //   var selectedOption = $(this).val();
-	// 	console.log('hello');
-    //   // make an AJAX request to the server
-    //   $.get('/get-data-product', { option: selectedOption }, function(data) {
-    //     // update the field with the response data
-    //     $("#unit_cost").val(data.selling_price);
-    //   });
-    // });
+	$("#item").change(function() {
+      // get the selected option value
+      var selectedOption = $(this).val();
+		// console.log('hello');
+      // make an AJAX request to the server
+      $.get('/get-data-product', { option: selectedOption }, function(data) {
+        // update the field with the response data
+        $("#stock").val(data.qty);
+      });
+    });
 
 	$("#table_field tbody").on("change", "select[name='item[]']", function () {
 		var product_id = $(this).val();
-		var price = $(this).closest("tr").find(".unit_price");
-		$.get('/get-price', { option: product_id }, function(data) {
+		var stock = $(this).closest("tr").find(".stock");
+		$.get('/get-data-product', { option: product_id }, function(data) {
         // update the field with the response data
-		if(data.discount_price == null){
-			price.val(data.selling_price);
+		console.log('Hello');
+		if(data.qty == null){
+			stock.val(0);
 		}else{
-			price.val(data.discount_price);
+			stock.val(data.qty);
 		}
 			
       });
 		// price.val(product_id);
                
     });
+
+	document.querySelector('#paidamount').addEventListener('input', function() {
+		$("#dueamount").val("");
+ 		var paidamount = this.value;
+		var grandtotal = document.getElementById("grandtotal").value;
+		var duetotal = grandtotal - paidamount;
+		$("#dueamount").val(duetotal);
+  // Now you can use the inputValue variable to access the value of the input element
+	});
+	
 
 	// $("select[name='item[]']").each(function() {
 	// 	var selectedOption = $(this).val();

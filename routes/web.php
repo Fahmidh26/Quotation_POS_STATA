@@ -628,9 +628,24 @@ Route::prefix('product')->group(function(){
 
             Route::get('/view', [PurchaseController::class, 'PurchaseForm'])->name('purchase.view');
             
-            Route::post('/store', [SupplierController::class, 'SupplierStore'])->name('purchase.store');
+            Route::post('/store', [PurchaseController::class, 'PurchaseStore'])->name('purchase.store');
     
             Route::get('/manage', [SupplierController::class, 'SupplierManage'])->name('purchase.manage');
+
+            // Route::get('/get-stock', [PurchaseController::class, 'getProductStock']);
+
+            Route::get('/get-unit-price', function(Request $request) {
+                // get the product ID from the query string
+                $productId = $request->query('productId');
+              
+                // $unitPrice = Product::where('id',$productId)->value('unit_price')->get();
+                // query the database for the unit price of the product
+                $unitPrice = DB::table('products')->where('id', $productId)->value('selling_price');
+              
+                // return the unit price as a JSON response
+                return response()->json(['unitPrice' => $unitPrice]);
+              });
+        
             
             // Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
             
