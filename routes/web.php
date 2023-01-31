@@ -630,7 +630,7 @@ Route::prefix('product')->group(function(){
             
             Route::post('/store', [PurchaseController::class, 'PurchaseStore'])->name('purchase.store');
     
-            Route::get('/manage', [SupplierController::class, 'SupplierManage'])->name('purchase.manage');
+            Route::get('/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
 
             // Route::get('/get-stock', [PurchaseController::class, 'getProductStock']);
 
@@ -647,7 +647,7 @@ Route::prefix('product')->group(function(){
               });
         
             
-            // Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
+            Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
             
             // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
             

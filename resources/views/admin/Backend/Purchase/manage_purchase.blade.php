@@ -17,7 +17,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Purchase List <span class="badge badge-pill badge-danger"> {{ count($quotations) }} </span></h3>
+				  <h3 class="box-title">Purchase List <span class="badge badge-pill badge-danger"> {{ count($purchases) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -25,50 +25,33 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-							
-								<th>Invoice</th>
-								<th>Customer Name</th>
-								<th>Quotation Date</th>
-								<th>Expiry Date</th>
-								<th>Discount %</th>
-								<th>Grand Total</th>
-								<th>Created By</th>
+								<th>SL.</th>
+								<th>Chalan No</th>
+								<th>Supplier Name</th>
+								<th>Purchase Date</th>
+								<th>Total Amount</th>
 								<th>Action</th>
 								 
 							</tr>
 						</thead>
 						<tbody>
-	 @foreach($quotations as $item)
+			@php
+				$sl = 0;
+			@endphp
+	 @foreach($purchases as $item)
 	 <tr>
-        <td>{{ $item->invoice }}</td>
-		<td>{{ $item->customer->customer_name }}</td>
-		<td>{{ $item->quotation_date }}</td>
-		 <td>{{ $item->expire_date }} </td>
-		 <td> 
-			@if($item->discount_percentage == NULL && $item->discount_flat == NULL)
-			<span class="badge badge-pill badge-danger">No Discount</span>
-			@elseif ($item->discount_percentage == NULL)
-			  <span class="badge badge-pill badge-danger">TK {{ round($item->discount_flat)  }}</span>
-			@else
-			<span class="badge badge-pill badge-danger">{{ $item->discount_percentage }}%</span>
-			@endif
-		</td>
+		<td width="5%">{{ $sl++ }}</td>
+        <td>{{ $item->chalan_no }}</td>
+		<td>{{ $item->supplier->supplier_name }}</td>
+		<td>{{ $item->purchase_date }}</td>
+		<td>TK {{ $item->grand_total }} </td>
 
-			<td>TK {{ $item->grand_total }} </td>
-	
-		 <td>{{ $item->auth->name }} </td>
-     
-
-
-
-
-		<td width="30%">
- <a href="{{ route('view.quotation',$item->id) }}" class="btn btn-primary" title="Quotation View"><i class="fa fa-eye"></i> </a>
+		<td width="20%">
+ <a href="{{ route('purchase.details',$item->id) }}" class="btn btn-primary" title="Purchase View"><i class="fa fa-eye"></i> </a>
 
  {{-- <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a> --}}
-
- <a href="{{ url('quotation/invoice_download/'.$item->id ) }}" class="btn btn-danger" title="Download Quotation">
- 	<i class="fa fa-download"></i></a>
+{{-- 
+ <a href="{{ url('quotation/invoice_download/'.$item->id ) }}" class="btn btn-danger" title="Download Quotation"><i class="fa fa-download"></i></a> --}}
 
 		</td>
 							 

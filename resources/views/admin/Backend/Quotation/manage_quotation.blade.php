@@ -25,7 +25,7 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-							
+								<th>SL.</th>
 								<th>Invoice</th>
 								<th>Customer Name</th>
 								<th>Quotation Date</th>
@@ -38,8 +38,12 @@
 							</tr>
 						</thead>
 						<tbody>
+			@php
+				$sl = 0;
+			@endphp
 	 @foreach($quotations as $item)
 	 <tr>
+		<td width="5%">{{ $sl++ }}</td>
         <td>{{ $item->invoice }}</td>
 		<td>{{ $item->customer->customer_name }}</td>
 		<td>{{ $item->quotation_date }}</td>

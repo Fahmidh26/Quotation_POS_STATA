@@ -108,22 +108,23 @@ class PurchaseController extends Controller
 
     }
 
-    public function ManageQuotation(Request $request){
+    public function PurchaseManage (){
        
-        $quotations = Quotation::latest()->get();
-		return view('admin.Backend.Quotation.manage_quotation',compact('quotations'));
+        $purchases = Purchase::latest()->get();
+		return view('admin.Backend.Purchase.manage_purchase',compact('purchases'));
 
     }
 
     	// Quotation View 
-	    public function viewQuotation($quotation_id){
+	    public function PurchaseDetails($purchase_id){
 
-            $quotation = Quotation::findOrFail($quotation_id);
-            $quotationItems = QuotationItem::where('quotation_id',$quotation_id)->get();
-            $customers = Customer::orderBy('customer_name','ASC')->get();
-            $products = Product::orderBy('product_name','ASC')->get();
+            $purchase = Purchase::findOrFail($purchase_id);
+            $purchaseItems = PurchaseItem::where('purchase_id',$purchase_id)->get();
+            $paymentItems = PaymentItem::where('purchase_id',$purchase_id)->get();
+            // $supplier = Supplier::where('purchase_id',$purchase_id)->get();
+            // $products = Product::orderBy('product_name','ASC')->get();
 
-            return view('admin.Backend.Quotation.quotation_view',compact('quotation','customers','products','quotationItems'));
+            return view('admin.Backend.Purchase.purchase_details',compact('purchase','purchaseItems','paymentItems'));
 
 	} // end method 
 

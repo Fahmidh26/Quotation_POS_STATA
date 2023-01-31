@@ -82,7 +82,7 @@
 						  <td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td>
 						  <td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td>
 						  <td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td>
-						  <td><input class="btn btn-warning" type="button" name="add" id="add" value="Add"></td>
+						  <td><i class="fa-solid fa-circle-plus display-4 text-success" type="button" name="add" id="add" ></i></td>
 					</tr>
 				</table>
 				
@@ -148,17 +148,17 @@
 								  </select>	  
 							  </td>
 								<td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td>
-								<td><input class="btn btn-warning" type="button" name="addpay" id="addpay" value="Add"></td>
-								<input class="form-control sumPayment" type="text" name="sumPayment" id="sumPayment" readonly>
+								<td><i class="fa-solid fa-circle-plus display-4 text-success" type="button" name="addpay" id="addpay"></i></td>
+								<input class="form-control sumPayment" type="text" name="sumPayment" id="sumPayment" hidden readonly>
 						  </tr>
 					  </table>
 					</div>
 					<div class="col">				
 					</div>
 				</div>
-
-					<input class="btn btn-success" type="submit" name="save" id="save" value="
-					Save Quotation">
+					<i class="fa-solid fa-floppy-disk h2 text-info" type="submit" name="save" id="save"> Save Purchase</i>
+					{{-- <input class="btn btn-success" type="submit" name="save" id="save" value="
+					Save Quotation"> --}}
 	
 			</div>
 	  </form>
@@ -182,24 +182,28 @@
   
   <script>
 	$(document).ready(function(){
-		var html='<tr> <td><select id="item" name="item[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product) <option value="{{ $product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>	@endforeach</select></td><td><input class="form-control stock" type="text" id="stock" name="stock[]" required="" readonly></td><td><input class="form-control batch" type="text" id="batch" name="batch[]" required=""></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="remove"></td></tr>';
+		var html='<tr> <td><select id="item" name="item[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product) <option value="{{ $product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>	@endforeach</select></td><td><input class="form-control stock" type="text" id="stock" name="stock[]" required="" readonly></td><td><input class="form-control batch" type="text" id="batch" name="batch[]" required=""></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><i class="fa-solid fa-circle-xmark display-4 text-danger" type="button" name="remove" id="remove"></i></td></tr>';
 	
-		var x =1;
+		// var x =1;
 	  $("#add").click(function(){
 		$("#table_field").append(html);
 	  });
 	  $("#table_field").on('click', '#remove', function () {
     $(this).closest('tr').remove();
+	totalPrice();
+	duePrice();
 	});
 
-	var htmlpay='<tr><td><select id="payitem" name="payitem[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($banks as $payment)<option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>@endforeach</select></td><td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td><td><input class="btn btn-danger" type="button" name="payremove" id="payremove" value="remove"></td></tr>';
+	var htmlpay='<tr><td><select id="payitem" name="payitem[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($banks as $payment)<option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>@endforeach</select></td><td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td><td><i class="fa-solid fa-circle-xmark display-4 text-danger" type="button" name="payremove" id="payremove"></i></td></tr>';
 
-		var x =1;
+		// var x =1;
 	  $("#addpay").click(function(){
 		$("#table_fieldpayment").append(htmlpay);
 	  });
 	  $("#table_fieldpayment").on('click', '#payremove', function () {
     $(this).closest('tr').remove();
+	totalPayment()
+	duePrice();
 	});
 	
 	$("#table_field tbody").on("input", ".rate", function () {
