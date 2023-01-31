@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2023 at 09:38 AM
+-- Generation Time: Jan 31, 2023 at 05:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -139,7 +139,8 @@ CREATE TABLE `banks` (
 --
 
 INSERT INTO `banks` (`id`, `bank_name`, `ac_name`, `ano_name`, `branch`, `sign_image`, `created_at`, `updated_at`) VALUES
-(1, 'CIty', 'tasdik', '6565656565', 'progoti', NULL, '2023-01-10 01:14:49', NULL);
+(1, 'CIty', 'tasdik', '6565656565', 'progoti', NULL, '2023-01-10 01:14:49', NULL),
+(2, 'Cash', 'tasdik', '6565656565', 'progoti', NULL, '2023-01-30 01:37:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -1160,7 +1161,14 @@ INSERT INTO `payment_items` (`id`, `purchase_id`, `bank_id`, `b_paid_amount`, `c
 (14, 36, 1, 42.00, '2023-01-26 00:29:11', '2023-01-26 00:29:11'),
 (15, 37, 1, 43.00, '2023-01-26 00:30:47', '2023-01-26 00:30:47'),
 (16, 38, 1, 34.00, '2023-01-26 00:32:13', '2023-01-26 00:32:13'),
-(17, 39, 1, 49.00, '2023-01-26 01:06:34', '2023-01-26 01:06:34');
+(17, 39, 1, 49.00, '2023-01-26 01:06:34', '2023-01-26 01:06:34'),
+(18, 40, 1, 4.00, '2023-01-30 04:47:02', '2023-01-30 04:47:02'),
+(19, 40, 2, 95.00, '2023-01-30 04:47:02', '2023-01-30 04:47:02'),
+(20, 40, 1, 54.00, '2023-01-30 04:47:02', '2023-01-30 04:47:02'),
+(21, 41, 2, 11.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(22, 41, 2, 93.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(23, 41, 2, 80.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(24, 41, 1, 29.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31');
 
 -- --------------------------------------------------------
 
@@ -1209,7 +1217,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (2, '1', 'STATA 1G Smart Switch (Metal Body)', '2200', 'ST-MV-SGS-1G-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (3, '1', 'STATA 2G Smart Switch (Metal Body)', '2500', 'ST-MV-SGS-2G-GW', 1, NULL, NULL, NULL, NULL, '2023-01-25 00:01:18'),
 (4, '1', 'STATA 2G Smart Switch (Metal Body)', '2500', 'ST-MV-SGS-2G-JB', 1, NULL, NULL, NULL, NULL, NULL),
-(5, '1', 'STATA 3G Smart Switch (Metal Body)', '2900', 'ST-MV-SGS-3G-GW', 1, NULL, NULL, NULL, NULL, NULL),
+(5, '1', 'STATA 3G Smart Switch (Metal Body)', '2900', 'ST-MV-SGS-3G-GW', 1, NULL, NULL, 10, NULL, '2023-01-30 05:45:31'),
 (6, '1', 'STATA 3G Smart Switch (Metal Body)', '2900', 'ST-MV-SGS-3G-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (7, '1', 'STATA 4G Smart Switch (Metal Body)', '3200', 'ST-MV-SGS-4G-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (8, '1', 'STATA 4G Smart Switch (Metal Body)', '3200', 'ST-MV-SGS-4G-JB', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1240,7 +1248,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (33, '1', 'STATA Smart Switch 4G ', '3200', 'ST-YTT-SGS-4G-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (34, '1', 'STATA Smart Switch 4G ', '3200', 'ST-YTT-SGS-4G-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (35, '1', 'STATA Smart Boiler Switch 20A', '', 'ST-YTT-SGS-BS-GW', 1, NULL, NULL, NULL, NULL, NULL),
-(36, '1', 'STATA Smart Boiler Switch 20A', '', 'ST-YTT-SGS-BS-JB', 1, NULL, NULL, NULL, NULL, NULL),
+(36, '1', 'STATA Smart Boiler Switch 20A', '', 'ST-YTT-SGS-BS-JB', 1, NULL, NULL, 72, NULL, '2023-01-30 04:47:01'),
 (37, '1', 'STATA Smart Fan Dimmer', '', 'ST-YTT-SGS-FD-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (38, '1', 'STATA Smart Fan Dimmer', '', 'ST-YTT-SGS-FD-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (39, '1', 'STATA Curtain Switch', '', 'ST-YTT-SGS-CS-GW', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1274,7 +1282,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (67, '2', 'STATA X9+', '27999', 'ST-DEF-SDL-X9+-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (68, '2', 'STATA X9+', '27999', 'ST-DEF-SDL-X9+-RG', 1, NULL, NULL, NULL, NULL, NULL),
 (69, '2', 'STATA X9', '25000', 'ST-DEF-SDL-X9-BL', 1, NULL, NULL, NULL, NULL, NULL),
-(70, '2', 'STATA X9', '25000', 'ST-DEF-SDL-X9-RG', 1, NULL, NULL, NULL, NULL, NULL),
+(70, '2', 'STATA X9', '25000', 'ST-DEF-SDL-X9-RG', 1, NULL, NULL, 43, NULL, '2023-01-30 04:47:01'),
 (71, '2', 'STATA X9', '25000', 'ST-DEF-SDL-X9-SE', 1, NULL, NULL, NULL, NULL, NULL),
 (72, '2', 'STATA X9 Lite', '20999', 'ST-DEF-SDL-X9-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (73, '2', 'STATA X9 Lite', '20999', 'ST-DEF-SDL-X9-RG', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1293,7 +1301,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (86, '2', 'STATA X5', '', 'ST-DEF-SDL-X5-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (87, '2', 'STATA X5', '', 'ST-DEF-SDL-X5-RG', 1, NULL, NULL, NULL, NULL, NULL),
 (88, '2', 'STATA Glass Door Lock (BLE)', '', 'ST-DEF-BGDL-RG', 1, NULL, NULL, NULL, NULL, NULL),
-(89, '2', 'STATA Glass Door Lock (BLE)', '', 'ST-DEF-BGDL-BL', 1, NULL, NULL, NULL, NULL, NULL),
+(89, '2', 'STATA Glass Door Lock (BLE)', '', 'ST-DEF-BGDL-BL', 1, NULL, NULL, 92, NULL, '2023-01-30 05:45:31'),
 (90, '2', 'STATA Glass Door Lock (WiFI)', '', 'ST-DEF-WGDL-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (91, '2', 'STATA ULTRA', '', 'ST-DEF-SDL-ULT-MB', 1, NULL, NULL, NULL, NULL, NULL),
 (92, '2', 'STATA ULTRA', '', 'ST-DEF-SDL-ULT-GM', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1333,7 +1341,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (126, '9', 'STATA Traditional Fan Dimmer', '', 'ST-SD-TSS-TRFD-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (127, '9', 'STATA Traditional Fan Dimmer', '', 'ST-SD-TSS-TRFD-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (128, '9', 'STATA Traditional Fan Dimmer', '', 'ST-SD-TSS-TRFD-IVG', 1, NULL, NULL, NULL, NULL, NULL),
-(129, '9', 'MIB Touch Fan Dimmer', '', 'MB-XZX-TSS-TFD-GW', 1, NULL, NULL, NULL, NULL, NULL),
+(129, '9', 'MIB Touch Fan Dimmer', '', 'MB-XZX-TSS-TFD-GW', 1, NULL, NULL, 57, NULL, '2023-01-30 05:45:31'),
 (130, '9', 'MIB Touch Fan Dimmer', '', 'MB-XZX-TSS-TFD-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (131, '9', 'MIB 1G Touch Switch', '', 'MB-XZX-TSS-T1G-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (132, '9', 'MIB 1G Touch Switch', '', 'MB-XZX-TSS-T1G-JB', 1, NULL, NULL, NULL, NULL, '2023-01-25 01:55:26'),
@@ -1343,7 +1351,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (136, '9', 'MIB 3G Touch Switch', '', 'MB-XZX-TSS-T3G-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (137, '9', 'MIB 4G Touch Switch', '', 'MB-XZX-TSS-T4G-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (138, '9', 'MIB 4G Touch Switch', '', 'MB-XZX-TSS-T4G-JB', 1, NULL, NULL, NULL, NULL, NULL),
-(139, '9', '1G Touch Switch Body With Front Shell', '', 'MB-XZX-TSS-1GTSBFS-BL', 1, NULL, NULL, NULL, NULL, NULL),
+(139, '9', '1G Touch Switch Body With Front Shell', '', 'MB-XZX-TSS-1GTSBFS-BL', 1, NULL, NULL, 64, NULL, '2023-01-30 05:45:31'),
 (140, '9', '2G Touch Switch Body With Front Shell', '', 'MB-XZX-TSS-2GTSBFS-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (141, '9', '3G Touch Switch Body With Front Shell', '', 'MB-XZX-TSS-3GTSBFS-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (142, '9', '4G Touch Switch Body With Front Shell', '', 'MB-XZX-TSS-4GTSBFS-BL', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1368,7 +1376,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (161, '9', 'MIB Telephone  Socket', '', 'MB-SD-TSS-TS-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (162, '3', 'Smart Gas Valve', '', 'ST-MV-SGV-DF', 1, NULL, NULL, NULL, NULL, NULL),
 (163, '4', 'Smart RGB Bulb 10W', '1650', 'ST-FLD-SLS-E2710W-RGB', 1, NULL, NULL, NULL, NULL, NULL),
-(164, '4', 'Smart Downlight 9W', '', 'ST-FLD-SLS-DL9W-RGB', 1, NULL, NULL, NULL, NULL, NULL),
+(164, '4', 'Smart Downlight 9W', '', 'ST-FLD-SLS-DL9W-RGB', 1, NULL, NULL, 91, NULL, '2023-01-30 04:47:01'),
 (165, '4', 'Smart LED Strip Light RGB', '', 'ST-FLD-SLS-SL5M-RGB', 1, NULL, NULL, NULL, NULL, NULL),
 (166, '4', 'Smart Sunset Light', '', 'ST-FLD-SLS-SUN-RGB', 1, NULL, NULL, NULL, NULL, NULL),
 (167, '4', 'Smart Rhythmic Lamp', '', 'ST-FLD-SLS-SRL-RGB', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1377,7 +1385,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (170, '7', 'Video Doorbell with 7in Display ', '', 'ST-MOR-SHA-7SVDD-WH', 1, NULL, NULL, NULL, NULL, NULL),
 (171, '7', 'Video Doorbell with 7in Display ', '', 'ST-MOR-SHA-7SVDD-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (172, '1', 'Smart 1G Metal Body', '1200', 'ST-MV-S1SMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
-(173, '1', 'Smart 2G Metal Body', '1500', 'ST-MV-S2SMB-SMB-DF', 1, NULL, NULL, NULL, NULL, '2023-01-25 00:00:40'),
+(173, '1', 'Smart 2G Metal Body', '1500', 'ST-MV-S2SMB-SMB-DF', 1, NULL, NULL, 15, NULL, '2023-01-30 05:45:31'),
 (174, '1', 'Smart 3G Metal Body', '1900', 'ST-MV-S3SMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
 (175, '1', 'Smart 4G Metal Body', '2300', 'ST-MV-S4SMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
 (176, '1', 'Smart Fan Dimmer Metal Body', '1900', 'ST-MV-SFDMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1630,7 +1638,9 @@ INSERT INTO `purchases` (`id`, `supplier_id`, `chalan_no`, `purchase_date`, `det
 (36, 1, 'Rerum odit ut tempor', '1999-07-03', 'Sint omnis tempora s', 8969.00, 8894.00, NULL, '75', NULL, '4', '8890', '1', '2023-01-26 00:29:11', NULL),
 (37, 1, 'Labore irure maiores', '1995-06-19', 'Doloremque eu perspi', 5460.00, 5420.00, NULL, '40', NULL, '31', '5389', '1', '2023-01-26 00:30:46', NULL),
 (38, 1, 'Consequat Do et sun', '1984-01-15', 'Sit veniam ipsam n', 174.00, 174.00, NULL, '73', NULL, '18', '3215', '1', '2023-01-26 00:32:13', NULL),
-(39, 1, 'Ut aperiam consequat', '1974-04-19', 'Occaecat ducimus co', 690.00, 690.00, NULL, '68', NULL, '94', '4456', '1', '2023-01-26 01:06:34', NULL);
+(39, 1, 'Ut aperiam consequat', '1974-04-19', 'Occaecat ducimus co', 690.00, 690.00, NULL, '68', NULL, '94', '4456', '1', '2023-01-26 01:06:34', NULL),
+(40, 1, 'Nostrum quis blandit', '2010-06-28', 'Architecto quos aut', 1420.00, 1328.00, NULL, '92', NULL, '153', '1175', '1', '2023-01-30 04:47:01', NULL),
+(41, 1, 'Deserunt dolores dol', '1970-04-26', 'Exercitation et illo', 10391.00, 9351.90, '10', NULL, NULL, '213', '9138.9', '1', '2023-01-30 05:45:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -1670,7 +1680,15 @@ INSERT INTO `purchase_items` (`id`, `purchase_id`, `product_id`, `qty`, `batch_n
 (19, 37, 103, 84, 'Voluptatibus qui in', 65.00, 5460.00, '2023-01-26 00:30:47', '2023-01-26 00:30:47'),
 (20, 38, 103, 3, 'Enim optio est pro', 58.00, 174.00, '2023-01-26 00:32:13', '2023-01-26 00:32:13'),
 (21, 39, 103, 10, 'Eos tempor id et dol', 41.00, 410.00, '2023-01-26 01:06:34', '2023-01-26 01:06:34'),
-(22, 39, 110, 10, 'Nulla voluptatem vo', 28.00, 280.00, '2023-01-26 01:06:34', '2023-01-26 01:06:34');
+(22, 39, 110, 10, 'Nulla voluptatem vo', 28.00, 280.00, '2023-01-26 01:06:34', '2023-01-26 01:06:34'),
+(23, 40, 36, 72, 'Odit eligendi ut com', 1.00, 72.00, '2023-01-30 04:47:01', '2023-01-30 04:47:01'),
+(24, 40, 164, 91, 'Atque elit voluptat', 3.00, 273.00, '2023-01-30 04:47:01', '2023-01-30 04:47:01'),
+(25, 40, 70, 43, 'Dolorem nemo dolorem', 25.00, 1075.00, '2023-01-30 04:47:01', '2023-01-30 04:47:01'),
+(26, 41, 89, 92, 'Qui fuga Nobis ea n', 42.00, 3864.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(27, 41, 5, 10, 'Id obcaecati cillum', 92.00, 920.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(28, 41, 139, 64, 'Doloribus corrupti', 84.00, 5376.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(29, 41, 173, 15, 'Incidunt quo et est', 4.00, 60.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(30, 41, 129, 57, 'Molestiae repudianda', 3.00, 171.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31');
 
 -- --------------------------------------------------------
 
@@ -1831,9 +1849,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('3U5vCUC2Hi3so00epytKf1tWPPtNCEZlSHJ48KOA', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNzZTbVZIMEFXUFRyR24xNzZvNG1jSk0yejIxNUx4eGVLb1BpUkdSUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0L21hbmFnZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE5OiJwYXNzd29yZF9oYXNoX2FkbWluIjtzOjYwOiIkMnkkMTAkQUxiTW1HbnFDZUJmbFAuSlQ4TFdOdS9zd3NtZXJ2RjJVRnNzVUJBM1FLbzUyYzZDckE5WWUiO30=', 1674719151),
-('Fdy1UoCtwsocAW8rsQzFbydQ68Zp94mE2LcoZ4Nz', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicFJSaFJRS0hYbDR5VlR5TjNVeThSdEFiQ1Z4U3czOXF1cU1McjV1VSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wdXJjaGFzZS92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRBTGJNbUducUNlQmZsUC5KVDhMV051L3N3c21lcnZGMlVGc3NVQkEzUUtvNTJjNkNyQTlZZSI7fQ==', 1674729050),
-('rRq1DKwonhydP5gOxzbS84Ppr97w2FvpZGGClxLF', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiQlp6NjlaQ2ZubU1qVEFkd1hhSTUzcWxWU3VONm9SMXRFRnFYU1ROSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wdXJjaGFzZS92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRBTGJNbUducUNlQmZsUC5KVDhMV051L3N3c21lcnZGMlVGc3NVQkEzUUtvNTJjNkNyQTlZZSI7fQ==', 1674894984);
+('sol4tAEHRqz1xPJiAAi7AOeDo5SSKrqVHBirH9E7', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibmpvb1lxY25jVEJHb0tqS1RndjRWaXRFMnljSk5BMHlHY2ZlZVJ1YyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wdXJjaGFzZS92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRBTGJNbUducUNlQmZsUC5KVDhMV051L3N3c21lcnZGMlVGc3NVQkEzUUtvNTJjNkNyQTlZZSI7fQ==', 1675079510),
+('tjHjMYIZjy2WKvCDIM3YukdIaUAMW5R5LJS1Tv9l', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidEhJZ0haelIySHNlRGNuYnpJT2VJUmFmTk1lWGdrVjlpUENjbWhjYiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wdXJjaGFzZS92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRBTGJNbUducUNlQmZsUC5KVDhMV051L3N3c21lcnZGMlVGc3NVQkEzUUtvNTJjNkNyQTlZZSI7fQ==', 1675139485);
 
 -- --------------------------------------------------------
 
@@ -2346,7 +2363,7 @@ ALTER TABLE `admins1`
 -- AUTO_INCREMENT for table `banks`
 --
 ALTER TABLE `banks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `brands`
@@ -2424,7 +2441,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `payment_items`
 --
 ALTER TABLE `payment_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -2454,13 +2471,13 @@ ALTER TABLE `productsold`
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `purchase_items`
 --
 ALTER TABLE `purchase_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `quotations`
