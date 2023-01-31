@@ -48,6 +48,8 @@
     $purchase = (auth()->guard('admin')->user()->purchase == 1);
     $review = (auth()->guard('admin')->user()->review == 1);
     $orders = (auth()->guard('admin')->user()->orders == 1);
+    $expense = (auth()->guard('admin')->user()->expense == 1);
+    $hr = (auth()->guard('admin')->user()->hr == 1);
     $locations = (auth()->guard('admin')->user()->locations == 1);
     $stock = (auth()->guard('admin')->user()->stock == 1);
     $reports = (auth()->guard('admin')->user()->reports == 1);
@@ -181,6 +183,44 @@
   <ul class="treeview-menu">
     <li class="{{ ($route == 'purchase.view')? 'active':'' }}"><a href="{{ route('purchase.view') }}"><i class="ti-more"></i>Add Purchase</a></li>
     <li class="{{ ($route == 'purchase.manage')? 'active':'' }}"><a href="{{ route('purchase.manage') }}"><i class="ti-more"></i>Manage Purchase</a></li>
+     
+  </ul>
+</li> 
+@else
+@endif	
+
+
+@if($hr == true)
+<li class="treeview {{ ($prefix == '/hr')?'active':'' }}  ">
+  <a href="#">
+    <i data-feather="file"></i>
+    <span>HR</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-right pull-right"></i>
+    </span>
+  </a>
+  <ul class="treeview-menu">
+    <li class="{{ ($route == 'employee.view')? 'active':'' }}"><a href="{{ route('employee.add') }}"><i class="ti-more"></i>Add Employee</a></li>
+    <li class="{{ ($route == 'purchase.manage')? 'active':'' }}"><a href="{{ route('purchase.manage') }}"><i class="ti-more"></i>Manage Employee</a></li>
+    <li class="{{ ($route == 'designation.add')? 'active':'' }}"><a href="{{ route('designation.add') }}"><i class="ti-more"></i>Add Designation</a></li>
+  </ul>
+</li> 
+@else
+@endif	
+
+@if($expense == true)
+<li class="treeview {{ ($prefix == '/expense')?'active':'' }}  ">
+  <a href="#">
+    <i data-feather="file"></i>
+    <span>Expense</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-right pull-right"></i>
+    </span>
+  </a>
+  <ul class="treeview-menu">
+    <li class="{{ ($route == 'expenseType.view')? 'active':'' }}"><a href="{{ route('expenseType.view') }}"><i class="ti-more"></i>Add Expense Type</a></li>
+    <li class="{{ ($route == 'purchase.manage')? 'active':'' }}"><a href="{{ route('purchase.manage') }}"><i class="ti-more"></i>Expense Type</a></li>
+    <li class="{{ ($route == 'purchase.manage')? 'active':'' }}"><a href="{{ route('purchase.manage') }}"><i class="ti-more"></i>Manage Expense</a></li>
      
   </ul>
 </li> 

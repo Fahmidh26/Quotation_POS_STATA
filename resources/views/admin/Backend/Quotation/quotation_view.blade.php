@@ -138,6 +138,17 @@
 							<div class="col"><input value="{{$quotation->grand_total}}" class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
 							</div>
 						</div>
+
+						<div class="row mb-3">
+							<div class="col-4"><label>Paid Amount</label></div>
+							<div class="col"><input value="{{$quotation->paid_amount}}" class="form-control" type="text" name="paidamount" id="paidamount">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-4"><label>Due Amount</label></div>
+							<div class="col"><input value="{{$quotation->due_amount}}" class="form-control" type="text" name="dueamount" id="dueamount" readonly>
+							</div>
+						</div>
 					
 					</div>
 				</div>

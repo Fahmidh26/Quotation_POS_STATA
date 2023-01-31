@@ -17,7 +17,7 @@
 					<div class="row mb-3">
 						<div class="col-2"><label for="mySelect">Supplier</label></div>
 						<div class="col"><input type="text" id="mySearch" class="form-control mb-3" placeholder="Search Supplier">
-							<select id="mySelect" name="supplier_id" class="form-control">
+							<select id="mySelect" name="supplier_id" class="form-control" required="">
 							<option value="" selected="" disabled="">Select Supplier</option>
 							@foreach($suppliers as $supplier)
 									 <option value="{{ $supplier->id }}">{{ $supplier->supplier_name }}</option>	
@@ -28,7 +28,7 @@
 	
 						<div class="row mb-3">
 							<div class="col-2"><label>Chalan No.</label></div>
-							<div class="col"><input class="form-control mb-3" type="text" id="chalan" name="chalan"></div>
+							<div class="col"><input class="form-control mb-3" type="text" id="chalan" name="chalan" required=""></div>
 						</div>
 	
 						{{-- <div class="row mb-3">
@@ -39,7 +39,7 @@
 				<div class="col">
 					<div class="row mb-3">
 						<div class="col-2"><label>Quotation Date</label></div>
-						<div class="col"><input class="form-control mb-3" type="date" id="quoDate" name="quoDate"></div>
+						<div class="col"><input class="form-control mb-3" type="date" id="quoDate" name="quoDate" required=""></div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-2"><label>Details</label></div>

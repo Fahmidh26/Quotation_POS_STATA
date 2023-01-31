@@ -27,6 +27,16 @@ class PurchaseController extends Controller
 
     public function PurchaseStore(Request $request)
     {
+        // $request->validate([
+    	// 	'supplier_id' => 'required',
+    	// 	'chalan' => 'required',
+        //     'quoDate' => 'required',
+    	// ],[
+    	// 	'customer_id.required' => 'Please Select a Customer',
+        //     'quoDate.required' => 'Please Enter Quotation Date',
+        //     'expDate.required' => 'Please Enter Quotation Expiry Date',
+    	// ]);
+
         $purchased_id = Purchase::insertGetId([
             'supplier_id' => $request->supplier_id,
             'chalan_no' => $request->chalan,

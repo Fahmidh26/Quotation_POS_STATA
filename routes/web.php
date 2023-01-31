@@ -16,7 +16,10 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Backend\subCategoryController;
+use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\homePageController;
 use App\Http\Controllers\PurchaseController;
@@ -658,3 +661,82 @@ Route::prefix('product')->group(function(){
             // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
             
             });
+
+
+    Route::prefix('expense')->group(function(){
+
+        Route::get('/expense-type', [ExpenseController::class, 'EnpenseTypeView'])->name('expenseType.view');
+        
+        Route::post('/expense-type/store', [ExpenseController::class, 'EnpenseTypeStore'])->name('enpenseType.store');
+
+        Route::get('/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
+
+        // Route::get('/get-stock', [PurchaseController::class, 'getProductStock']);
+
+        Route::get('/get-unit-price', function(Request $request) {
+            // get the product ID from the query string
+            $productId = $request->query('productId');
+            
+            // $unitPrice = Product::where('id',$productId)->value('unit_price')->get();
+            // query the database for the unit price of the product
+            $unitPrice = DB::table('products')->where('id', $productId)->value('selling_price');
+            
+            // return the unit price as a JSON response
+            return response()->json(['unitPrice' => $unitPrice]);
+            });
+    
+        
+        Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
+        
+        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+        
+        // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+        
+        // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+        
+        // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+        
+        });
+
+
+
+        Route::prefix('hr')->group(function(){
+
+            Route::get('/employee-add', [EmployeeController::class, 'AddEmployee'])->name('employee.add');
+            
+            Route::post('/expense-type/store', [ExpenseController::class, 'EnpenseTypeStore'])->name('enpenseType.store');
+    
+            Route::get('/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
+
+            Route::get('/designation-add', [DesignationController::class, 'AddDesignation'])->name('designation.add');
+    
+            // Route::get('/get-stock', [PurchaseController::class, 'getProductStock']);
+    
+        Route::get('/get-unit-price', function(Request $request) {
+            // get the product ID from the query string
+            $productId = $request->query('productId');
+            
+            // $unitPrice = Product::where('id',$productId)->value('unit_price')->get();
+            // query the database for the unit price of the product
+            $unitPrice = DB::table('products')->where('id', $productId)->value('selling_price');
+            
+            // return the unit price as a JSON response
+            return response()->json(['unitPrice' => $unitPrice]);
+            });
+    
+        
+        Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
+        
+        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+        
+        // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+        
+        // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+        
+        // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+        
+        });
+
+
+
+        
