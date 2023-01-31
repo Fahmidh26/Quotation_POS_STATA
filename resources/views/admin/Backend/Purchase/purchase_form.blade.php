@@ -156,9 +156,9 @@
 					<div class="col">				
 					</div>
 				</div>
-					<i class="fa-solid fa-floppy-disk h2 text-info" type="submit" name="save" id="save"> Save Purchase</i>
-					{{-- <input class="btn btn-success" type="submit" name="save" id="save" value="
-					Save Quotation"> --}}
+					{{-- <i class="btn fa-solid fa-floppy-disk h2 text-info" type="submit" name="save" id="save"> Save Purchase</i> --}}
+					<input class="btn btn-success" type="submit" name="save" id="save" value="
+					Save Quotation">
 	
 			</div>
 	  </form>
