@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2023 at 05:34 AM
+-- Generation Time: Jan 31, 2023 at 12:49 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -48,6 +48,8 @@ CREATE TABLE `admins` (
   `stock` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `reports` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `alluser` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `expense` int(255) DEFAULT NULL,
+  `hr` int(255) DEFAULT NULL,
   `adminuserrole` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `quotation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type` int(25) DEFAULT NULL,
@@ -62,15 +64,15 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `brand`, `category`, `product`, `customer`, `bank`, `supplier`, `setting`, `purchase`, `review`, `orders`, `locations`, `stock`, `reports`, `alluser`, `adminuserrole`, `quotation`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$ALbMmGnqCeBflP.JT8LWNu/swsmervF2UFssUBA3QKo52c6CrA9Ye', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '7vQ0tDooW8lm7V6q9Q5jiOkY8d7IFtIqYptOJxZQyiBKKPeXyX5pnPJkCWQR', NULL, '202207230834attachment_127807231.jfif', '2022-06-05 03:57:32', '2022-07-23 03:06:17'),
-(7, 'Sayma Akter', 'fahmidh26@gmail.com', NULL, '$2y$10$WCfvH6ljbVaTlJ/b79GQMO02tEUn5jFmj5b5CKKrdgH.ExE/EPAVK', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1753440570992745.jpg', '2022-12-28 01:07:18', NULL),
-(8, 'Yeasin Arafat', 'yeasin.stata@gmail.com', NULL, '$2y$10$5oyl7.KQx.6v4kaSqqP6h.MKVNKrozEgKNI/dCRfb1fQECadjpdVi', '01908497296', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1754718976521602.jpg', '2023-01-11 15:47:00', NULL),
-(9, 'Dewan Zawad', 'zawad@statait.com', NULL, '$2y$10$NX9DSEwQN8kU408osE/fTuL9QgwSLonP1FYsUo8fsFWZ7X6Wp6eri', '01322896403', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719086506933.jpg', '2023-01-11 15:48:45', NULL),
-(10, 'Shahriar Tasnim', 'shariar@statait.com', NULL, '$2y$10$YixA5mQpbGJcRHxFdUWnhuoMuUavQI85vYlLfFDoD4mrXoDU35nZe', '01322896402', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719210815819.jpg', '2023-01-11 15:50:44', NULL),
-(11, 'Rahul Chakrabarty', 'rahul@statait.com', NULL, '$2y$10$BAB2JJeIzHyh84AXSYoR3u4aWaAJ3ZVeF14Z6GYXlcHJ1nzLEH52G', '01720514565', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719287871540.jpg', '2023-01-11 15:51:57', NULL),
-(12, 'Ayman Shorab', 'ayman.stata@gmail.com', NULL, '$2y$10$qJcLv3Gt7Cyzno7rAyhij.SISI3PfPUTJY2tDGfsCdETlWZbJqodW', '01322896406', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719587188913.jpg', '2023-01-11 15:56:42', NULL),
-(13, 'Md. Maruf Hussain', 'omarsunjery.stata@gmail.com', NULL, '$2y$10$/KmSVbINYRne0wQsyGSLPuFJalufAqLpJA6Mruwb1jb0F0JcPvId6', '01322896409', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719690786082.jpg', '2023-01-11 15:58:21', NULL);
+INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `brand`, `category`, `product`, `customer`, `bank`, `supplier`, `setting`, `purchase`, `review`, `orders`, `locations`, `stock`, `reports`, `alluser`, `expense`, `hr`, `adminuserrole`, `quotation`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$ALbMmGnqCeBflP.JT8LWNu/swsmervF2UFssUBA3QKo52c6CrA9Ye', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, 1, '1', '1', 1, '7vQ0tDooW8lm7V6q9Q5jiOkY8d7IFtIqYptOJxZQyiBKKPeXyX5pnPJkCWQR', NULL, '202207230834attachment_127807231.jfif', '2022-06-05 03:57:32', '2022-07-23 03:06:17'),
+(7, 'Sayma Akter', 'fahmidh26@gmail.com', NULL, '$2y$10$WCfvH6ljbVaTlJ/b79GQMO02tEUn5jFmj5b5CKKrdgH.ExE/EPAVK', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', NULL, NULL, '1', '1', 2, NULL, NULL, 'upload/admin_images/1753440570992745.jpg', '2022-12-28 01:07:18', NULL),
+(8, 'Yeasin Arafat', 'yeasin.stata@gmail.com', NULL, '$2y$10$5oyl7.KQx.6v4kaSqqP6h.MKVNKrozEgKNI/dCRfb1fQECadjpdVi', '01908497296', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', NULL, NULL, '1', '1', 2, NULL, NULL, 'upload/admin_images/1754718976521602.jpg', '2023-01-11 15:47:00', NULL),
+(9, 'Dewan Zawad', 'zawad@statait.com', NULL, '$2y$10$NX9DSEwQN8kU408osE/fTuL9QgwSLonP1FYsUo8fsFWZ7X6Wp6eri', '01322896403', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', NULL, NULL, '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719086506933.jpg', '2023-01-11 15:48:45', NULL),
+(10, 'Shahriar Tasnim', 'shariar@statait.com', NULL, '$2y$10$YixA5mQpbGJcRHxFdUWnhuoMuUavQI85vYlLfFDoD4mrXoDU35nZe', '01322896402', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', NULL, NULL, '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719210815819.jpg', '2023-01-11 15:50:44', NULL),
+(11, 'Rahul Chakrabarty', 'rahul@statait.com', NULL, '$2y$10$BAB2JJeIzHyh84AXSYoR3u4aWaAJ3ZVeF14Z6GYXlcHJ1nzLEH52G', '01720514565', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', NULL, NULL, '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719287871540.jpg', '2023-01-11 15:51:57', NULL),
+(12, 'Ayman Shorab', 'ayman.stata@gmail.com', NULL, '$2y$10$qJcLv3Gt7Cyzno7rAyhij.SISI3PfPUTJY2tDGfsCdETlWZbJqodW', '01322896406', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', NULL, NULL, '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719587188913.jpg', '2023-01-11 15:56:42', NULL),
+(13, 'Md. Maruf Hussain', 'omarsunjery.stata@gmail.com', NULL, '$2y$10$/KmSVbINYRne0wQsyGSLPuFJalufAqLpJA6Mruwb1jb0F0JcPvId6', '01322896409', '1', '1', '1', NULL, NULL, NULL, '1', NULL, '1', '1', '1', '1', '1', '1', NULL, NULL, '1', '1', 2, NULL, NULL, 'upload/admin_images/1754719690786082.jpg', '2023-01-11 15:58:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -902,6 +904,52 @@ INSERT INTO `customers1` (`id`, `customer_name`, `email`, `phone`, `address`, `c
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `designations`
+--
+
+CREATE TABLE `designations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `designation` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employees`
+--
+
+CREATE TABLE `employees` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expense_types`
+--
+
+CREATE TABLE `expense_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `expenseType` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `expense_types`
+--
+
+INSERT INTO `expense_types` (`id`, `expenseType`, `created_at`, `updated_at`) VALUES
+(1, 'Fare', '2023-01-31 03:47:47', NULL),
+(2, 'Rent', '2023-01-31 03:49:16', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -989,7 +1037,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (38, '2023_01_10_071658_create_suppliers_table', 26),
 (39, '2023_01_10_111709_create_purchases_table', 27),
 (40, '2023_01_10_111933_create_purchase_items_table', 27),
-(41, '2023_01_10_114539_create_payment_items_table', 27);
+(41, '2023_01_10_114539_create_payment_items_table', 27),
+(42, '2023_01_31_092320_create_expense_types_table', 28),
+(43, '2023_01_31_095728_create_employees_table', 29),
+(44, '2023_01_31_103138_create_designations_table', 29);
 
 -- --------------------------------------------------------
 
@@ -1168,7 +1219,10 @@ INSERT INTO `payment_items` (`id`, `purchase_id`, `bank_id`, `b_paid_amount`, `c
 (21, 41, 2, 11.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
 (22, 41, 2, 93.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
 (23, 41, 2, 80.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
-(24, 41, 1, 29.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31');
+(24, 41, 1, 29.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(25, 42, 1, 20.00, '2023-01-30 22:48:43', '2023-01-30 22:48:43'),
+(26, 42, 2, 59.00, '2023-01-30 22:48:43', '2023-01-30 22:48:43'),
+(27, 43, 1, 53.00, '2023-01-30 22:58:50', '2023-01-30 22:58:50');
 
 -- --------------------------------------------------------
 
@@ -1257,7 +1311,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (42, '1', 'STATA Light Dimmer', '2900', 'ST-YTT-SGS-LD-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (43, '8', 'Crystal Glass Panel 1G (Front Shell)', '700', 'ST-YTT-S1SP-GMB-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (44, '8', 'Crystal Glass Panel 1G (Front Shell)', '700', 'ST-YTT-S1SP-GMB-JB', 1, NULL, NULL, NULL, NULL, NULL),
-(45, '8', 'Crystal Glass Panel 2G (Front Shell)', '700', 'ST-YTT-S2SP-GMB-GW', 1, NULL, NULL, NULL, NULL, NULL),
+(45, '8', 'Crystal Glass Panel 2G (Front Shell)', '700', 'ST-YTT-S2SP-GMB-GW', 1, NULL, NULL, 5, NULL, '2023-01-30 22:58:50'),
 (46, '8', 'Crystal Glass Panel 2G (Front Shell)', '700', 'ST-YTTS2SP-GMB-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (47, '8', 'Crystal Glass Panel 3G (Front Shell)', '700', 'ST-YTT-S3SP-GMB-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (48, '8', 'Crystal Glass Panel 3G (Front Shell)', '700', 'ST-YTT-S3SP-GMB-JB', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1350,7 +1404,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (135, '9', 'MIB 3G Touch Switch', '', 'MB-XZX-TSS-T3G-GW', 1, NULL, NULL, NULL, NULL, NULL),
 (136, '9', 'MIB 3G Touch Switch', '', 'MB-XZX-TSS-T3G-JB', 1, NULL, NULL, NULL, NULL, NULL),
 (137, '9', 'MIB 4G Touch Switch', '', 'MB-XZX-TSS-T4G-GW', 1, NULL, NULL, NULL, NULL, NULL),
-(138, '9', 'MIB 4G Touch Switch', '', 'MB-XZX-TSS-T4G-JB', 1, NULL, NULL, NULL, NULL, NULL),
+(138, '9', 'MIB 4G Touch Switch', '', 'MB-XZX-TSS-T4G-JB', 1, NULL, NULL, 7, NULL, '2023-01-30 22:48:43'),
 (139, '9', '1G Touch Switch Body With Front Shell', '', 'MB-XZX-TSS-1GTSBFS-BL', 1, NULL, NULL, 64, NULL, '2023-01-30 05:45:31'),
 (140, '9', '2G Touch Switch Body With Front Shell', '', 'MB-XZX-TSS-2GTSBFS-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (141, '9', '3G Touch Switch Body With Front Shell', '', 'MB-XZX-TSS-3GTSBFS-BL', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1386,7 +1440,7 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `selling_price`, `p
 (171, '7', 'Video Doorbell with 7in Display ', '', 'ST-MOR-SHA-7SVDD-BL', 1, NULL, NULL, NULL, NULL, NULL),
 (172, '1', 'Smart 1G Metal Body', '1200', 'ST-MV-S1SMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
 (173, '1', 'Smart 2G Metal Body', '1500', 'ST-MV-S2SMB-SMB-DF', 1, NULL, NULL, 15, NULL, '2023-01-30 05:45:31'),
-(174, '1', 'Smart 3G Metal Body', '1900', 'ST-MV-S3SMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
+(174, '1', 'Smart 3G Metal Body', '1900', 'ST-MV-S3SMB-SMB-DF', 1, NULL, NULL, 21, NULL, '2023-01-30 22:48:43'),
 (175, '1', 'Smart 4G Metal Body', '2300', 'ST-MV-S4SMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
 (176, '1', 'Smart Fan Dimmer Metal Body', '1900', 'ST-MV-SFDMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
 (177, '1', 'Smart Boiler Metal Body', '2000', 'ST-MV-SBMB-SMB-DF', 1, NULL, NULL, NULL, NULL, NULL),
@@ -1640,7 +1694,9 @@ INSERT INTO `purchases` (`id`, `supplier_id`, `chalan_no`, `purchase_date`, `det
 (38, 1, 'Consequat Do et sun', '1984-01-15', 'Sit veniam ipsam n', 174.00, 174.00, NULL, '73', NULL, '18', '3215', '1', '2023-01-26 00:32:13', NULL),
 (39, 1, 'Ut aperiam consequat', '1974-04-19', 'Occaecat ducimus co', 690.00, 690.00, NULL, '68', NULL, '94', '4456', '1', '2023-01-26 01:06:34', NULL),
 (40, 1, 'Nostrum quis blandit', '2010-06-28', 'Architecto quos aut', 1420.00, 1328.00, NULL, '92', NULL, '153', '1175', '1', '2023-01-30 04:47:01', NULL),
-(41, 1, 'Deserunt dolores dol', '1970-04-26', 'Exercitation et illo', 10391.00, 9351.90, '10', NULL, NULL, '213', '9138.9', '1', '2023-01-30 05:45:30', NULL);
+(41, 1, 'Deserunt dolores dol', '1970-04-26', 'Exercitation et illo', 10391.00, 9351.90, '10', NULL, NULL, '213', '9138.9', '1', '2023-01-30 05:45:30', NULL),
+(42, 1, 'Do alias iusto sint', '2016-09-18', 'Dolore deserunt cupi', 2282.00, 2195.00, NULL, '87', NULL, '79', '2116', '1', '2023-01-30 22:48:43', NULL),
+(43, 1, 'Sint minima ipsam c', '1985-09-24', NULL, 110.00, 61.00, NULL, '49', NULL, '53', '8', '1', '2023-01-30 22:58:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -1688,7 +1744,10 @@ INSERT INTO `purchase_items` (`id`, `purchase_id`, `product_id`, `qty`, `batch_n
 (27, 41, 5, 10, 'Id obcaecati cillum', 92.00, 920.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
 (28, 41, 139, 64, 'Doloribus corrupti', 84.00, 5376.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
 (29, 41, 173, 15, 'Incidunt quo et est', 4.00, 60.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
-(30, 41, 129, 57, 'Molestiae repudianda', 3.00, 171.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31');
+(30, 41, 129, 57, 'Molestiae repudianda', 3.00, 171.00, '2023-01-30 05:45:31', '2023-01-30 05:45:31'),
+(31, 42, 138, 7, 'Fuga Repellendus O', 56.00, 392.00, '2023-01-30 22:48:43', '2023-01-30 22:48:43'),
+(32, 42, 174, 21, 'Et occaecat dolor ex', 90.00, 1890.00, '2023-01-30 22:48:43', '2023-01-30 22:48:43'),
+(33, 43, 45, 5, 'Dolorem quod ullam b', 22.00, 110.00, '2023-01-30 22:58:50', '2023-01-30 22:58:50');
 
 -- --------------------------------------------------------
 
@@ -1709,6 +1768,8 @@ CREATE TABLE `quotations` (
   `discount_flat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vat_percentage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vat_amount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paid_amount` int(255) DEFAULT NULL,
+  `due_amount` int(255) DEFAULT NULL,
   `total_discount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1719,18 +1780,19 @@ CREATE TABLE `quotations` (
 -- Dumping data for table `quotations`
 --
 
-INSERT INTO `quotations` (`id`, `customer_id`, `auth_id`, `invoice`, `quotation_date`, `expire_date`, `sub_total`, `grand_total`, `discount_percentage`, `discount_flat`, `vat_percentage`, `vat_amount`, `total_discount`, `details`, `created_at`, `updated_at`) VALUES
-(9, 2, 7, 'STA79786413', '2022-12-30', '2022-12-29', 5000.00, 4980.00, '26', '', NULL, NULL, '20', 'asasasas', '2022-12-28 02:33:48', NULL),
-(10, 1, 7, 'STA83983868', '2022-12-29', '2022-12-30', 200.00, 180.00, NULL, '20', NULL, NULL, '20', 'asasasas', '2022-12-28 02:56:59', NULL),
-(11, 1, 7, 'STA99200923', '2022-12-30', '2022-12-30', 5000.00, 4980.00, NULL, '20', NULL, NULL, '20', 'das', '2022-12-28 03:01:25', NULL),
-(13, 1, 1, 'STA13586498', '1971-12-23', '2015-10-16', 29700.00, 29680.00, NULL, '20', NULL, NULL, '20', 'Temporibus tempore', '2023-01-07 00:43:15', NULL),
-(14, 2, 1, 'STA71200428', '2004-10-07', '1975-05-30', 81700.00, 73530.00, '10', NULL, NULL, NULL, NULL, 'Dolores occaecat iru', '2023-01-07 07:56:02', NULL),
-(15, 1, 1, 'STA47652491', '1971-04-16', '1981-06-14', 62438.00, 56194.20, '10', NULL, NULL, NULL, NULL, 'Amet fugit molesti', '2023-01-07 09:17:08', NULL),
-(18, 2, 7, 'STA13734083', '2023-02-07', '2023-01-08', 37360.00, 37340.00, NULL, '20', NULL, NULL, '20', 'Ullam dolor qui labo', '2023-01-08 05:39:16', NULL),
-(19, 391, 1, 'STA90219594', NULL, NULL, 38800.00, 34920.00, '10', NULL, NULL, NULL, NULL, 'quotation1', '2023-01-09 04:59:08', NULL),
-(20, 5, 1, 'STA37885306', '2023-01-26', '2023-01-27', 5000.00, 4500.00, '10', NULL, NULL, NULL, NULL, 'quotation12', '2023-01-09 05:00:21', NULL),
-(21, 6, 1, 'STA20926283', '2023-01-09', '2023-01-11', 9400.00, 4700.00, '50', NULL, NULL, NULL, NULL, 'gg', '2023-01-09 10:40:01', NULL),
-(22, 5, 7, 'STA88497961', '2023-02-03', '2023-02-04', 3400.00, 3060.00, '10', NULL, NULL, NULL, NULL, 'das', '2023-01-11 02:54:01', NULL);
+INSERT INTO `quotations` (`id`, `customer_id`, `auth_id`, `invoice`, `quotation_date`, `expire_date`, `sub_total`, `grand_total`, `discount_percentage`, `discount_flat`, `vat_percentage`, `vat_amount`, `paid_amount`, `due_amount`, `total_discount`, `details`, `created_at`, `updated_at`) VALUES
+(9, 2, 7, 'STA79786413', '2022-12-30', '2022-12-29', 5000.00, 4980.00, '26', '', NULL, NULL, NULL, NULL, '20', 'asasasas', '2022-12-28 02:33:48', NULL),
+(10, 1, 7, 'STA83983868', '2022-12-29', '2022-12-30', 200.00, 180.00, NULL, '20', NULL, NULL, NULL, NULL, '20', 'asasasas', '2022-12-28 02:56:59', NULL),
+(11, 1, 7, 'STA99200923', '2022-12-30', '2022-12-30', 5000.00, 4980.00, NULL, '20', NULL, NULL, NULL, NULL, '20', 'das', '2022-12-28 03:01:25', NULL),
+(13, 1, 1, 'STA13586498', '1971-12-23', '2015-10-16', 29700.00, 29680.00, NULL, '20', NULL, NULL, NULL, NULL, '20', 'Temporibus tempore', '2023-01-07 00:43:15', NULL),
+(14, 2, 1, 'STA71200428', '2004-10-07', '1975-05-30', 81700.00, 73530.00, '10', NULL, NULL, NULL, NULL, NULL, NULL, 'Dolores occaecat iru', '2023-01-07 07:56:02', NULL),
+(15, 1, 1, 'STA47652491', '1971-04-16', '1981-06-14', 62438.00, 56194.20, '10', NULL, NULL, NULL, NULL, NULL, NULL, 'Amet fugit molesti', '2023-01-07 09:17:08', NULL),
+(18, 2, 7, 'STA13734083', '2023-02-07', '2023-01-08', 37360.00, 37340.00, NULL, '20', NULL, NULL, NULL, NULL, '20', 'Ullam dolor qui labo', '2023-01-08 05:39:16', NULL),
+(19, 391, 1, 'STA90219594', NULL, NULL, 38800.00, 34920.00, '10', NULL, NULL, NULL, NULL, NULL, NULL, 'quotation1', '2023-01-09 04:59:08', NULL),
+(20, 5, 1, 'STA37885306', '2023-01-26', '2023-01-27', 5000.00, 4500.00, '10', NULL, NULL, NULL, NULL, NULL, NULL, 'quotation12', '2023-01-09 05:00:21', NULL),
+(21, 6, 1, 'STA20926283', '2023-01-09', '2023-01-11', 9400.00, 4700.00, '50', NULL, NULL, NULL, NULL, NULL, NULL, 'gg', '2023-01-09 10:40:01', NULL),
+(22, 5, 7, 'STA88497961', '2023-02-03', '2023-02-04', 3400.00, 3060.00, '10', NULL, NULL, NULL, NULL, NULL, NULL, 'das', '2023-01-11 02:54:01', NULL),
+(23, 313, 1, 'STA51109394', '1976-05-29', '1984-01-25', 200.00, 200.00, NULL, '74', NULL, NULL, 20, 180, '74', 'Fugiat voluptate re', '2023-01-31 00:19:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -1786,7 +1848,8 @@ INSERT INTO `quotation_items` (`id`, `quotation_id`, `product_id`, `qty`, `price
 (50, 21, 115, '2', 1700.00, 3400, '2023-01-09 10:40:01', '2023-01-09 10:40:01'),
 (51, 21, 53, '3', 1500.00, 4500, '2023-01-09 10:40:01', '2023-01-09 10:40:01'),
 (52, 21, 88, '1', 1500.00, 1500, '2023-01-09 10:40:01', '2023-01-09 10:40:01'),
-(53, 22, 23, '2', 1700.00, 3400, '2023-01-11 02:54:01', '2023-01-11 02:54:01');
+(53, 22, 23, '2', 1700.00, 3400, '2023-01-11 02:54:01', '2023-01-11 02:54:01'),
+(54, 23, 37, '100', 2.00, 200, '2023-01-31 00:19:14', '2023-01-31 00:19:14');
 
 -- --------------------------------------------------------
 
@@ -1849,8 +1912,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('sol4tAEHRqz1xPJiAAi7AOeDo5SSKrqVHBirH9E7', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibmpvb1lxY25jVEJHb0tqS1RndjRWaXRFMnljSk5BMHlHY2ZlZVJ1YyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wdXJjaGFzZS92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRBTGJNbUducUNlQmZsUC5KVDhMV051L3N3c21lcnZGMlVGc3NVQkEzUUtvNTJjNkNyQTlZZSI7fQ==', 1675079510),
-('tjHjMYIZjy2WKvCDIM3YukdIaUAMW5R5LJS1Tv9l', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidEhJZ0haelIySHNlRGNuYnpJT2VJUmFmTk1lWGdrVjlpUENjbWhjYiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wdXJjaGFzZS92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRBTGJNbUducUNlQmZsUC5KVDhMV051L3N3c21lcnZGMlVGc3NVQkEzUUtvNTJjNkNyQTlZZSI7fQ==', 1675139485);
+('tI7AfwdD3uMmCTS2uCPUrKNirBOv8D1OXSixs97r', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidUY5ZUE1YU1MeWg3Ykw3ZXFIeG5zT3BvR2tsbnFremNEQmhXcFpjNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9oci9kZXNpZ25hdGlvbi1hZGQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJEFMYk1tR25xQ2VCZmxQLkpUOExXTnUvc3dzbWVydkYyVUZzc1VCQTNRS281MmM2Q3JBOVllIjt9', 1675165687);
 
 -- --------------------------------------------------------
 
@@ -2156,6 +2218,24 @@ ALTER TABLE `customers1`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `designations`
+--
+ALTER TABLE `designations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `expense_types`
+--
+ALTER TABLE `expense_types`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -2402,6 +2482,24 @@ ALTER TABLE `customers1`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `designations`
+--
+ALTER TABLE `designations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `expense_types`
+--
+ALTER TABLE `expense_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -2417,7 +2515,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `multi_imgs`
@@ -2441,7 +2539,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `payment_items`
 --
 ALTER TABLE `payment_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -2471,25 +2569,25 @@ ALTER TABLE `productsold`
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `purchase_items`
 --
 ALTER TABLE `purchase_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `quotations`
 --
 ALTER TABLE `quotations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `quotation_items`
 --
 ALTER TABLE `quotation_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `reviews`
