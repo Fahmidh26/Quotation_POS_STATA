@@ -74,7 +74,7 @@
 					<div class="table-responsive">
 
 
- <form method="post" action="{{ route('enpenseType.store') }}">
+ <form method="post" action="{{ route('designation.store') }}">
 	 	@csrf
 					   
 	 <div class="form-group">

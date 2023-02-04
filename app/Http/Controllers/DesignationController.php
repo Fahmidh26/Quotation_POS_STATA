@@ -14,7 +14,7 @@ class DesignationController extends Controller
 	}
 
 
-     public function CustomerStore(Request $request){
+     public function DesignationStore(Request $request){
 
     	// $request->validate([
     		 
@@ -30,7 +30,7 @@ class DesignationController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Customer Inserted Successfully',
+			'message' => 'Designation Inserted Successfully',
 			'alert-type' => 'success'
 		);
 

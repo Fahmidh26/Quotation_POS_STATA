@@ -702,14 +702,17 @@ Route::prefix('product')->group(function(){
 
         Route::prefix('hr')->group(function(){
 
+            // EMPLOYEE
             Route::get('/employee-add', [EmployeeController::class, 'AddEmployee'])->name('employee.add');
             
             Route::post('/expense-type/store', [ExpenseController::class, 'EnpenseTypeStore'])->name('enpenseType.store');
-    
-            Route::get('/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
-
+            
+            // DESIGNATION
             Route::get('/designation-add', [DesignationController::class, 'AddDesignation'])->name('designation.add');
-    
+            
+            Route::post('/designation-store', [DesignationController::class, 'DesignationStore'])->name('designation.store');
+
+
             // Route::get('/get-stock', [PurchaseController::class, 'getProductStock']);
     
         Route::get('/get-unit-price', function(Request $request) {

@@ -3,36 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Designation;
+use App\Models\Employee;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image as Image;
 
 class EmployeeController extends Controller
 {
     public function AddEmployee(){
 		// $categories = Category::latest()->get();
-		// $brands = Brand::latest()->get();
+		$designations = Designation::latest()->get();
 		// return view('admin.Backend.Product.product', compact('categories','brands'));
-        return view('admin.Backend.Employee.employee');
+        return view('admin.Backend.Employee.employee', compact('designations'));
 	}
     
-	public function StoreProduct(Request $request){
+	public function StoreEmployee(Request $request){
 
-		$discount = ($request->selling_price) - ($request->discount_price);
+		$image = $request->file('picture');
+    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+    	Image::make($image)->resize(869,370)->save('upload/employee/'.$name_gen);
+    	$save_url = 'upload/employee/'.$name_gen;
 
-      $product_id = Product::insertGetId([
-      	'category_id' => $request->category_id,
-      	'product_name' => $request->product_name,
-      	'product_code' => $request->product_code,
+	Employee::insert([
+		'title' => $request->title,
+        'subTitle' => $request->subTitle,
+        'startingPrice' => $request->startingPrice,
+        'slideStyle' => $request->slideStyle,
+        'slider_img' => $save_url,
 
-      	'selling_price' => $request->selling_price,
-      	'discount_price' => $request->discount_price,
-		'qty' => 0,
-		
-		'discount' => $discount,
-	
-      	'status' => 1,
-      	'created_at' => Carbon::now(),   
-
-      ]);
+    	]);
 
 
        $notification = array(
