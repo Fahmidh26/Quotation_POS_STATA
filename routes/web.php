@@ -104,7 +104,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
     Route::get('/admin/dashboard', function () {
         $customers = Customer::orderBy('customer_name','ASC')->get();
         $products = Product::orderBy('product_name','ASC')->get();
-        return view('admin.Backend.Quotation.quotation_form', compact('products','customers'));
+        return view('admin.adminindex', compact('products','customers'));
     });
 });
 
