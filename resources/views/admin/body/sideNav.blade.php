@@ -84,7 +84,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
   
 
       <li class="nav-item">
-<a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link" aria-controls="ecommerceExamples" role="button" aria-expanded="true">
+<a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link" aria-controls="ecommerceExamples" role="button" >
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
 <svg class="text-dark" width="12px" height="12px" viewBox="0 0 42 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>basket</title>
