@@ -57,7 +57,9 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
           <span class="nav-link-text ms-1">Dashboard</span>
         </a>
       </li>
-      <li class="nav-item">
+
+      @if($category == true)
+      <li class="nav-item ">
         <a class="nav-link  " href="../pages/tables.html">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -74,9 +76,13 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
               </g>
             </svg>
           </div>
-          <span class="nav-link-text ms-1">Tables</span>
+          <span class="nav-link-text ms-1">Category</span>
         </a>
       </li>
+      @else
+      @endif
+  
+
       <li class="nav-item">
 <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link" aria-controls="ecommerceExamples" role="button" aria-expanded="true">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -95,14 +101,14 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </svg>
 </div>
 
-<span class="nav-link-text ms-1">Ecommerce</span>
+<span class="nav-link-text ms-1 {{ ($prefix == '/category')?'active':'' }} ">Ecommerce</span>
 </a>
-<div class="collapse normal" id="ecommerceExamples" style="">
+<div class="collapse hide" id="ecommerceExamples" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item ">
-<a class="nav-link " href="../../pages/ecommerce/overview.html">
+<a class="nav-link {{ ($route == 'category.view')? 'active':'' }}" href="{{ route('category.view') }}">
 <span class="sidenav-mini-icon"> O </span>
-<span class="sidenav-normal"> Overview </span>
+<span class="sidenav-normal"> Category View </span>
 </a>
 </li>
 <li class="nav-item ">
@@ -170,6 +176,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </ul>
 </div>
 </li>
+
       <li class="nav-item">
         <a class="nav-link  " href="../pages/billing.html">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
