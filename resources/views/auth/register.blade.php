@@ -1,4 +1,4 @@
-@extends('frontend.main_master')
+{{-- @extends('frontend.main_master')
 @section('content')
 
 @section('title')
@@ -69,4 +69,4 @@ Signin
 	</section>
 	<!--================End Login Box Area =================-->
 
-@endsection
+@endsection --}}
