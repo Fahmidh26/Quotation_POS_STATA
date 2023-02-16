@@ -105,7 +105,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
         $customers = Customer::orderBy('customer_name','ASC')->get();
         $products = Product::orderBy('product_name','ASC')->get();
         return view('admin.adminindex', compact('products','customers'));
-    });
+    })->name('admin.dashboard');
 });
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'
@@ -559,7 +559,7 @@ Route::prefix('product')->group(function(){
 
     // QUOTATION
     Route::prefix('quotation')->group(function(){
-    // Route::get('/form', [QuotationController::class, 'index'])->name('admin.quotation');
+    Route::get('/add', [QuotationController::class, 'index'])->name('admin.quotation');
     Route::get('/manage', [QuotationController::class, 'ManageQuotation'])->name('all.quotation');
     
     Route::post('/store-input-fields', [QuotationController::class, 'saveUser'])->name('repeater');
