@@ -21666,7 +21666,7 @@ hr.horizontal.gray-light {
 
 .navbar-vertical .navbar-nav .nav-link[data-bs-toggle="collapse"][aria-expanded="true"]:after {
   color: #3A416F;
-  /* transform: rotate(180deg); */
+  transform: rotate(180deg);
 }
 
 .navbar-vertical .navbar-nav .nav-item .collapse .nav,
