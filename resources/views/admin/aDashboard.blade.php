@@ -45,11 +45,15 @@
   @include('admin.body.fixed_sidebar')
 
     <!--   Core JS Files   -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script src="{{ asset('/assets/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('/assets/datatable/data-table.js') }}"></script>
+  
     <script>
       var ctx = document.getElementById("chart-bars").getContext("2d");
   
