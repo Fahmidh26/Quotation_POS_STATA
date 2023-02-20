@@ -11,7 +11,7 @@
 		  <div class="card-body p-3">
 			<div class="row">
 							<!-- /.box-header -->
-							<div class="box-body">
+							{{-- <div class="box-body"> --}}
 								<div class="table-responsive">
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
@@ -28,34 +28,31 @@
 									<tbody>
 				 @foreach($products as $item)
 				 <tr>
-					<td>{{ $item->product_code }}</td>
+					<td><h6 class="mb-0 text-sm">{{ $item->product_code }}</h6></td>
 					<td>{{ $item->product_name }}</td>
-					 <td>TK {{ $item->selling_price }} </td>
-					 <td>
+					 <td class="text-sm font-weight-bold mb-0">TK {{ $item->selling_price }} </td>
+					 <td class="text-sm font-weight-bold mb-0">
 						@if($item->discount_price == NULL)
 						<span>TK 0</span>
 			
 						@else
 			
-						  <span >TK {{ $item->discount_price }} </span>
+						  <h6 class="mb-0 text-sm">TK {{ $item->discount_price }} </h6>
 			
 						@endif
 					</td>
-					 <td> 
+					 <td class="align-middle text-center text-sm"> 
 						 @if($item->discount_price == NULL)
-						 <span class="badge badge-pill badge-danger">No Discount</span>
+						 <h6 class="badge badge-sm bg-gradient-success">No Discount</h6>
 			
 						 @else
 						 @php
 						 $amount = $item->selling_price - $item->discount_price;
 						 $discount = ($amount/$item->selling_price) * 100;
 						 @endphp
-						   <span class="badge badge-pill badge-danger">{{ round($discount)  }} %</span>
+						   <span class="mb-0 text-sm">{{ round($discount)  }} %</span>
 			
 						 @endif
-			
-			
-			
 					 </td>
 			
 			
@@ -75,7 +72,7 @@
 									 
 								  </table>
 								</div>
-							</div>
+							{{-- </div> --}}
 			</div>
 		  </div>
 		</div>
