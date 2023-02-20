@@ -16,12 +16,12 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>Code</th>
-											<th>Name</th>
-											<th>Price </th>
-											<th>Discount Price</th>
-											<th>Discount %</th>
-											<th>Action</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price </th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Discount Price</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Discount %</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 											 
 										</tr>
 									</thead>
@@ -29,40 +29,33 @@
 				 @foreach($products as $item)
 				 <tr>
 					<td><h6 class="mb-0 text-sm">{{ $item->product_code }}</h6></td>
-					<td>{{ $item->product_name }}</td>
+					<td><p class="mb-0 text-sm">{{ $item->product_name }}</p></td>
 					 <td class="text-sm font-weight-bold mb-0">TK {{ $item->selling_price }} </td>
 					 <td class="text-sm font-weight-bold mb-0">
 						@if($item->discount_price == NULL)
-						<span>TK 0</span>
-			
+						<span><h6 class="mb-0 text-sm">TK 0</h6></span>
 						@else
-			
-						  <h6 class="mb-0 text-sm">TK {{ $item->discount_price }} </h6>
-			
+						  <h6 class="badge badge-sm bg-gradient-success">TK {{ $item->discount_price }} </h6>
 						@endif
 					</td>
 					 <td class="align-middle text-center text-sm"> 
 						 @if($item->discount_price == NULL)
-						 <h6 class="badge badge-sm bg-gradient-success">No Discount</h6>
-			
+						 <h6 class="badge badge-sm bg-gradient-secondary">No Discount</h6>
 						 @else
 						 @php
 						 $amount = $item->selling_price - $item->discount_price;
 						 $discount = ($amount/$item->selling_price) * 100;
 						 @endphp
-						   <span class="mb-0 text-sm">{{ round($discount)  }} %</span>
-			
+						 <h6 class="badge badge-sm bg-gradient-secondary"> {{ round($discount)  }} %</h6>			
 						 @endif
 					 </td>
 			
 			
-					<td width="30%">
-			 <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i> </a>
+					<td>
+
+			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('product.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
 			
-			 <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-			
-			 <a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
-				 <i class="fa fa-trash"></i></a>
+			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('product.delete',$item->id) }}"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a>
 			
 					</td>
 										 
